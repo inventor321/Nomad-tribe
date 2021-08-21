@@ -1,0 +1,149 @@
+.log{
+        left:80px;
+        top:100px;
+}
+
+body{
+        background-color: #eee;
+}
+
+.mainbackground{
+        width: 700px;
+        height: 500px;
+        border: 1px gray solid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+}
+
+
+
+.MainCharacter{
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        left: 0;
+        top: 0;
+        border: 1px green solid;
+        text-align: left;
+}
+
+.Enemy{
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        right: 0;
+        top:0;
+        border: 1px orange solid;
+        text-align: right;
+}
+
+.Character{
+        position: absolute;
+        left:0;
+        width: 100px;
+        height: 200px;
+        background:aqua; 
+        animation: Attack 1.5s ease;
+        animation-delay: 0.75s; 
+}
+
+@keyframes Attack {
+        0%{left: 0;}
+        50%{left: 0;}
+        75%{left: 100px;}
+        100%{left: 0;}
+}
+
+@keyframes EAttack {
+        0%{right: 0;}
+        50%{right: 0;}
+        75%{right: 100px;}
+        100%{right: 0;}
+}
+
+.ECharacter{
+        width: 100px;
+        height: 200px;
+        background:aqua;  
+        position: absolute;
+        right: 0;
+
+        
+} 
+
+.E{
+        position: absolute;
+        right: 10px;
+}
+
+.stats{
+        display: inline;
+        position: absolute;
+        top:300px;
+}
+
+.Charactername{
+        position: absolute;
+        top: 210px; ;
+}
+
+
+
+
+
+
+
+
+
+
+.hp::after{
+        content: counter(num);
+}
+
+.hpe::after{
+        content: counter(mun);
+}
+
+@keyframes counterhp {
+        from {
+          --num: var(--i);
+        }
+        to {
+          --num: var(--f);
+        }
+}
+
+
+
+@keyframes counterhpe {
+        from {
+          --mun: var(--ie);
+        }
+        to {
+          --mun: var(--fe);
+        }
+}
+
+.BattleResult{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 300px;
+        height: 300px;
+        background-color: #eee;
+        z-index: 999;
+        visibility: hidden;
+        border: 1px #222 solid;
+}
+
+@keyframes ResultofBattle {
+        from {
+                visibility: hidden;
+        }
+        to {
+                visibility: visible;
+        }
+}

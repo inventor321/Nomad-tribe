@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='wilderness.css')}}">
+
+            <style>
+
+                @property --num {
+                        syntax: "<integer>";
+                        initial-value: {{lh}};
+                        inherits: false;
+                }
+                @property --mun {
+                        syntax: "<integer>";
+                        initial-value: {{elh}};
+                        inherits: false;
+                }
+
+                :root{
+                        --i:{{Health}};
+                        --f:{{lh}};
+                        --ie:{{eHealth}};
+                        --fe:{{elh}};
+
+                }
+                .hp{
+                    display: inline;
+                    animation: counterhp {{(Health - lh)}}s linear 1 ;
+                    animation-delay: 0.5s;
+                    counter-reset: num var(--num);
+                    
+                }
+                .hpe{
+                    display: inline;
+                    animation: counterhpe {{((eHealth - elh)/(WeaponIndex/1.5))}}s steps({{iterationcount}},end) 1;
+                    animation-delay: 0s;
+                    counter-reset: mun var(--mun);
+                    
+                }
+                
+                .Character{
+                    
+                    animation-iteration-count: {{iterationcount}};
+                }
+                .ECharacter{
+                    animation: EAttack 1s;
+                    animation-delay: .5s;
+                    animation-iteration-count: {{eiterationcount}};
+                    
+                }       
+
+                .BattleResult{
+                    animation: ResultofBattle 999s ease 1;
+                    animation-delay: {{eiterationcount+2}}s ;
+                }
+
+            </style>
+
+        </head>
+            
+  <body> 
+        <div>   Coming soon! (PvE + Story/Quest) </div>
+    
+        <div class="log">╭⸻⸻╮</div>
+
+        <div class="mainbackground">
+
+            <div class="MainCharacter">
+
+                <div class="Character"></div>   
+                <div class="Charactername">You</div>
+                <div class="stats"> Health: <div class="hp you"></div>/{{Health}} <br>Attack : {{WeaponIndex}}</div>
+
+            </div>
+
+
+            <div class="Enemy">
+                 
+                <div class="ECharacter"></div>
+                <div class="E Charactername">Rat</div>
+                <div class="E stats"> Health: <div class="hpe ene"></div>/{{eHealth}} <br>Attack : 1</div>
+            </div>
+            <div class="BattleResult"> {{BattleReport}} {{BattleWood}} wood and {{BattleFood}} food from the fight <br><a href="http://127.0.0.1:5000/menu/">Return home</a></div>
+            
+        </div>
+        <div class ="income WoodResincome"></div>
+
+    </body> 
+
+
+</html>
+
+

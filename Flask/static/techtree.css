@@ -1,0 +1,241 @@
+
+body{
+    overflow: hidden;
+    background-color: #222;
+}
+
+h1{
+    margin: 0;
+    padding:0;
+    font-weight:normal;
+    font-size: 16px;
+    color: green;
+}
+
+h2{
+    margin: 0;
+    padding:0;
+    font-weight:bold;
+    font-size: 16px;
+}
+.bbackground{
+    background-color: #eee;
+    position: absolute;
+
+    border: black solid 1px ;
+    width: 96%;
+    height: 93%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+
+}
+
+.background{
+    width: 95.5%;
+    height: 91%;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+
+    
+    border: black solid 1px ;
+    background: linear-gradient(90deg,#272727, #ffffff);
+    color: linear-gradient(90deg, black 50%, white 50%);
+    position: relative;
+    
+}
+.bought{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 10;
+    background: grey;
+    opacity: 0.5;
+}
+.r{
+    height: 50px;
+    color: red;
+}
+.contain{
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    
+}
+.Upgrade-btn{
+
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    z-index: 10;
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.Upgrade-btn:hover{
+    background-color: darkgray;
+    color: white;
+}
+
+
+
+#StoneContainer{
+    top: 250px;
+    left: 30px;
+}
+#Stone:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+#STtoIT{
+    top: 260px;
+    left: 200px;
+}
+
+#IronContainer{
+    top: 250px;
+    left: 300px;
+}
+#Iron:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+#ITtoST{
+    top: 260px;
+    left: 470px;
+}
+
+
+#SteelContainer{
+    top: 250px;
+    left: 570px;
+}
+#Steel:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+
+
+
+
+
+
+
+
+#RessourceContainer{
+    top: 100px;
+    left: 30px;
+}
+
+#ressource:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+
+#HuntingStrategiesContainer{
+    top: 450px;
+    left: 30px;
+}
+#HuntingStrategies:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+#HStoS{
+    top:460px;
+    left: 200px;
+}
+
+#SpearsContainer{
+    top: 450px;
+    left: 300px; 
+}
+#spears:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+}
+
+#StoA{
+    top:460px;
+    left: 470px;
+}
+
+#AtlatlContainer{
+    top: 450px;
+    left: 570px; 
+}
+#Atlatl:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+}
+
+
+.popup{
+    
+    width: 145px;
+    background-color: #eee;
+    position: absolute;
+    visibility: hidden;
+    z-index: 2;
+    height: auto;
+    border: 1px solid grey;
+
+}
+
+
+
+
+.line{
+    width: 75px;
+    position: absolute;
+}
+
+
+.returnbutton{
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    line-height: 30px;
+    width: 120px;
+    height: 30px;
+    border: 1px #222 solid;
+    background-color: white;
+    color: black;
+}
+
+.returnbutton:hover{
+    background-color: rgb(204, 204, 204);
+    color: black;
+}

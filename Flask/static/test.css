@@ -1,0 +1,216 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background: grey;
+}
+input {
+  position: absolute;
+  left: -999px;
+}
+.track {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  background: green;
+  border: 20px black solid;
+  border-radius: 20px;
+  position: relative;
+}
+.finish {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 10px;
+  height: 20px;
+  background: white;
+  transform: translateX(-50%);
+}
+.runner {
+  position: absolute;
+  left: 50px;
+  top: 200px;
+  width: 20px;
+  height: 20px;
+  background: yellow;
+  animation: null 4s ease 1 forwards;
+}
+.timer {
+  position: absolute;
+  left: 20px;
+  top: 70px;
+  width: 160px;
+  height: 30px;
+  background: grey;
+  color: white;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+.timer ol {
+  list-style: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 300px;
+  animation: tick 10s steps(10) 1s infinite;
+  animation-play-state: var(--delaypause);
+}
+@keyframes delaypause {
+  0% {
+    --delaypause: running;
+  }
+  100% {
+    --delaypause: running;
+  }
+}
+#s0:checked ~ .track .timer ol {
+  animation-play-state: paused;
+  animation-name: null;
+}
+#s5:checked ~ .track .timer {
+  --delaypause: paused;
+  animation: delaypause 1.5s;
+}
+.timer li {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+ol.hundreds {
+  counter-reset: hundreds -1;
+  animation-duration: 1000s;
+}
+ol.tens {
+  counter-reset: tens -1;
+  animation-duration: 100s;
+}
+ol.ones {
+  counter-reset: ones -1;
+}
+ol.point,
+ol.point li {
+  width: 10px;
+  animation: none;
+}
+ol.tenths {
+  counter-reset: tenths -1;
+  animation-duration: 1s;
+}
+ol.hundredths {
+  counter-reset: hundredths -1;
+  animation-duration: 0.1s;
+}
+.hundreds li:before {
+  content: counter(hundreds);
+  counter-increment: hundreds;
+}
+.tens li:before {
+  content: counter(tens);
+  counter-increment: tens;
+}
+.ones li:before {
+  content: counter(ones);
+  counter-increment: ones;
+}
+.tenths li:before {
+  content: counter(tenths);
+  counter-increment: tenths;
+}
+.hundredths li:before {
+  content: counter(hundredths);
+  counter-increment: hundredths;
+}
+@keyframes tick {
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes straight1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(150px, 0);
+  }
+}
+@keyframes straight2 {
+  0% {
+    transform: translate(150px, 0);
+  }
+  100% {
+    transform: translate(150px, -220px);
+  }
+}
+@keyframes straight3 {
+  0% {
+    transform: translate(150px, -220px);
+  }
+  100% {
+    transform: translate(-70px, -220px);
+  }
+}
+@keyframes straight4 {
+  0% {
+    transform: translate(-70px, -220px);
+  }
+  100% {
+    transform: translate(-70px, 0);
+  }
+}
+@keyframes straight5 {
+  0% {
+    transform: translate(-70px, 0);
+  }
+  100% {
+    transform: translate(100px, 0);
+  }
+}
+#s1:checked ~ .track .runner {
+  animation-name: straight1;
+}
+#s2:checked ~ .track .runner {
+  animation-name: straight2;
+}
+#s3:checked ~ .track .runner {
+  animation-name: straight3;
+}
+#s4:checked ~ .track .runner {
+  animation-name: straight4;
+}
+#s5:checked ~ .track .runner {
+  animation-name: straight5;
+}
+label {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 170px;
+  width: 150px;
+  height: 20px;
+  background: white;
+  color: blue;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: visibility 1s linear 0;
+}
+:checked + label {
+  visibility: visible;
+  transition-delay: 3s;
+}
+
+
+
