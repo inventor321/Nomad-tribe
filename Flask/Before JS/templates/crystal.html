@@ -33,8 +33,9 @@
       Enchant
     </div>
     <select>
-      
       <option selected value="0"></option>
+      {% for options in select%}
+      
       <option value="1">{{Sword}}</option>
       <option value="2">{{Spear}}</option>
       <option value="3">Weapon 3</option>
@@ -42,7 +43,13 @@
     <div id="sacrifice">
       Sacrifice
     </div>
-    
+    <div class="background-chat">
+      <div class="chat">
+          {% for msg in chat %}
+              <h2 class="event">{{ msg }}</h2>
+          {% endfor %}
+      </div>
+  </div>
     </body> 
 
 

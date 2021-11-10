@@ -45,6 +45,7 @@ h2{
     background: linear-gradient(90deg,#272727, #ffffff);
     color: linear-gradient(90deg, black 50%, white 50%);
     position: relative;
+    overflow-y: scroll;
     
 }
 .bought{
@@ -197,6 +198,36 @@ h2{
     bottom: 40px;
     left: 1px;
 }
+
+#SackContainer{
+    top: 650px;
+    left: 30px;
+}
+#Sack:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+#StoH{
+    top:660px;
+    left: 200px;
+}
+
+#HutContainer{
+    top: 650px;
+    left: 300px; 
+}
+#Hut:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+}
+
+
 
 
 .popup{

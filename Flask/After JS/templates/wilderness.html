@@ -25,25 +25,26 @@
                 }
                 .hp{
                     display: inline;
-                    animation: counterhp {{(Health - lh)}}s linear 1 ;
+                    animation: counterhp {{((Health - lh)/(eAttack/eAttackSpeed))}}s steps({{eiterationcount}},end) 1 ;
                     animation-delay: 0.5s;
                     counter-reset: num var(--num);
                     
                 }
                 .hpe{
                     display: inline;
-                    animation: counterhpe {{((eHealth - elh)/(WeaponIndex/1.5))}}s steps({{iterationcount}},end) 1;
+                    animation: counterhpe {{((eHealth - elh)/(WeaponIndex/AttackSpeed))}}s steps({{iterationcount}},end) 1;
                     animation-delay: 0s;
                     counter-reset: mun var(--mun);
                     
                 }
                 
                 .Character{
-                    
+                    animation: Attack {{AttackSpeed}}s ease;
+
                     animation-iteration-count: {{iterationcount}};
                 }
                 .ECharacter{
-                    animation: EAttack 1s;
+                    animation: EAttack {{eAttackSpeed}}s;
                     animation-delay: .5s;
                     animation-iteration-count: {{eiterationcount}};
                     
@@ -69,7 +70,7 @@
 
                 <div class="Character"></div>   
                 <div class="Charactername">You</div>
-                <div class="stats"> Health: <div class="hp you"></div>/{{Health}} <br>Attack : {{WeaponIndex}}</div>
+                <div class="stats"> <div style="color:red; display: inline;">Health: <div class="hp you"></div>/{{Health}} </div><br>Attack : {{WeaponIndex}}</div>
 
             </div>
 
@@ -77,8 +78,8 @@
             <div class="Enemy">
                  
                 <div class="ECharacter"></div>
-                <div class="E Charactername">Rat</div>
-                <div class="E stats"> Health: <div class="hpe ene"></div>/{{eHealth}} <br>Attack : 1</div>
+                <div class="E Charactername">{{EnemyEntity}}</div>
+                <div class="E stats"> <div style="color:red; display: inline;">Health: <div class="hpe ene"></div>/{{eHealth}} </div><br>Attack : {{eAttack}}</div>
             </div>
             <div class="BattleResult"> {{BattleReport}} {{BattleWood}} wood and {{BattleFood}} food from the fight <br><a href="http://127.0.0.1:5000/menu/">Return home</a></div>
             

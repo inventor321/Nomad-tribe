@@ -385,6 +385,9 @@ body {
          7px 7px 20px 0px rgba(0,0,0,.1),
          4px 4px 5px 0px rgba(0,0,0,.1);
         outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 
@@ -443,6 +446,7 @@ body {
         left: 0px; 
         background: linear-gradient(0deg,#222, #eee);
         overflow: hidden;
+        word-wrap: break-word;
 }
 
 .chat{
@@ -469,14 +473,15 @@ body {
         -moz-background-clip: text;
         -moz-text-fill-color: transparent;
         z-index: 3;
+        
 }
 
 .event{
-
-
+        word-wrap: break-word;
         font-size: 19px;
         top: 0px;
         left: 0px;
+        width: 250px;
 }
 
 .exploredarea{
@@ -484,6 +489,7 @@ body {
         top: 600px;
         left: 255px;
         font-size: 17px;
+        color: #eee;
 
 }
 
@@ -855,6 +861,19 @@ body {
   top: 65px;
   left: 20px;
 }
+.Atlatl{
+        top:120px;
+        left: 20px;
+}
+.Sack{
+        top: 5px;
+        left: 200px;
+}
+.Hut{
+        top: 65px;
+        left: 200px;
+}
+
 
 html, body {
         min-width: 600px;

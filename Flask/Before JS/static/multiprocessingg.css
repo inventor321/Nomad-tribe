@@ -1,0 +1,158 @@
+
+.weapon{
+  width: 120px;
+  height: 30px;
+  background-color: #eee;
+ 
+}
+
+.w{
+  top: 5px;
+  left: 20px;
+}
+.sto{
+  top: 65px;
+  left: 20px;
+}
+.i{
+  top: 125px;
+  left: 20px;
+}
+.ste{
+  top: 185px;
+  left: 20px;
+}
+
+.ws{
+  top: 245px;
+  left: 20px;
+}
+.stos{
+  top: 305px;
+  left: 20px;
+}
+.is{
+  top: 365px;
+  left: 20px;
+}
+.stes{
+  top: 425px;
+  left: 20px;
+}
+
+
+html, body {
+  margin: 0p;
+  background-color: #222;
+}
+.label {
+  width: 150px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 40px;
+  font-size: 11px;
+  padding: 0 2em;
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+.label:before {
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+.cta-container {
+  position: absolute;
+
+}
+.button {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+}
+.relative-box {
+  position: relative;
+  height: 100%;
+}
+.square-front {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+}
+.line {
+  background-color: rgba(255, 255, 255, .25);
+  transition: all 0.3s ease;
+}
+.line:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.line.line-top:before, .line.line-bottom:before {
+  left: 50%;
+  right: 50%;
+}
+.line.line-left:before, .line.line-right:before {
+  top: 50%;
+  bottom: 50%;
+}
+.line-top {
+  position: absolute;
+  height: 2px;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.line-right {
+  position: absolute;
+  width: 2px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.line-bottom {
+  position: absolute;
+  height: 2px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.line-left {
+  position: absolute;
+  width: 2px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.button:hover .label {
+  color: rgba(22, 22, 22, 1);
+  background-color: white;
+}
+.button:hover .label:before {
+  opacity: 1;
+  transform: scale(1);
+}
+.button:hover .square-front .line-top:before, .button:hover .square-front .line-bottom:before, .button:hover .square-front .line-left:before, .button:hover .square-front .line-right:before {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

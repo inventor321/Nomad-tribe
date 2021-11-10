@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+    
+        <head>
+            <title>Nomadic Camp</title> 
+            <meta charset=utf-8> 
+            <meta http-equiv="refresh" content=";url=http://127.0.0.1:5000/" /><!------>
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+            <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+            <style>
+            .WoodResincome{
+                --u:{{wood}};
+
+                --n:{{wood+WW}};
+                
+
+            }
+            .FoodResincome{
+                --u:{{food}};
+                --n:{{food+FW}};
+                
+
+            }
+            .LeatherResincome{
+                --u:{{Leather}};
+                --n:{{Leather}};
+                
+
+            }
+
+
+            
+            </style>
+            
+        </head>
+             
+    <body> 
+            
+            <div class="background-chat">
+                <div class="chat">
+                    {% for msg in chat %}
+                        <h2 class="event">{{ msg }}</h2>
+                    {% endfor %}
+                </div>
+            </div>
+            <h1 style="text-shadow: 0px 0px 5px white;">Nomadic Camp</h1>              
+
+
+        <div class="tabs">
+            <div class="tab">
+              <input type="radio" id="tab-1" name="tab-group-1" {{Gcheck}}>
+              <label for="tab-1">Outside</label>
+              <div class="content">
+                <form action="." method="POST">
+                    <div class="progress">
+                        <div class="progress-value"></div>
+                        <div class="value"></div>
+                        <input class="butt" type="submit" value="Gather" name="Gather">
+                        <input class="butth" type="submit" value="Gather" name="Gather" style="visibility: {{replacement}};">
+                        <div class="butthbackground" style="visibility: {{replacement}};"></div>
+                    </div>
+                </form>
+              </div>
+            </div>
+            <div class="tab">
+                <input type="radio" id="tab-2" name="tab-group-1"{{Ccheck}}>
+                <label for="tab-2">Camp</label>
+                
+                <div class="content">
+                    <form action="." method="POST">
+                        <div class="Items">
+                            
+
+                        </div>
+
+                        <div class="ressources" style="z-index: 10;">
+                            <div class="population">Population : {{population}} / {{populationmax}}</div><div style="position: absolute;left: 190px;">Workers</div><br>
+                            <div class ="income WoodResincome">Wood : </div> <input class="buttons" type="submit" value="+WW" name="+WW"> <div class="workers">{{WW}}</div><input class=" R buttons" type="submit" value="-WW" name="-WW"><br>
+                            <div class ="income FoodResincome">Food : </div><input class=" buttons" type="submit" value="+FW" name="+FW"><div class="workers">{{FW}}</div><input class=" R buttons" type="submit" value="-FW" name="-FW"><br>
+                            <div class ="income LeatherResincome">Leather : </div><br>
+                        </div>
+
+                        <div class="cta-container sword" style="visibility: {{WSwvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Wooden Sword" name="Wooden Sword">
+                            </div>
+                          </div>
+                          <div class="cta-container sword" style="visibility: {{StoSwvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Stone Sword" name="Stone Sword">
+                            </div>
+                          </div>
+                          <div class="cta-container sword" style="visibility: {{ISwvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Iron Sword" name="Iron Sword">
+                            </div>
+                          </div>
+                          <div class="cta-container sword" style="visibility: {{SteSwvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Steel Sword" name="Steel Sword">
+                            </div>
+                          </div>
+                          <div class="cta-container spear" style="visibility: {{WSpvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Wooden Spear" name="Wooden Spear">
+                            </div>
+                          </div>
+                          <div class="cta-container spear" style="visibility: {{StoSpvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Stone Spear" name="Stone Spear">
+                            </div>
+                          </div>
+                          <div class="cta-container spear" style="visibility: {{ISpvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Iron Spear" name="Iron Spear">
+                            </div>
+                          </div>
+                          <div class="cta-container spear" style="visibility: {{SteSpvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Steel Spear" name="Steel Spear">
+                            </div>
+                          </div>
+                          <div class="cta-container Atlatl" style="visibility: {{Atlatlvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Atlatl" name="Atlatl">
+                            </div>
+                          </div>
+                          <div class="cta-container Sack" style="visibility: {{Sackvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Sack" name="Sack">
+                            </div>
+                          </div>
+                          <div class="cta-container Hut" style="visibility: {{Hutvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Hut" name="Hut">
+                            </div>
+                          </div>
+
+
+
+                    </form> 
+                    <div class="firebackground">
+
+                    <div class="Alight"></div>
+                    <div class="Acontent">
+                    <div class="Afire">
+                    <div class="Abottom"></div>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                    <figure></figure>
+                        </div>
+                    </div>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                        </filter>
+                    </defs>
+                    </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+              <input type="radio" id="tab-3" name="tab-group-1" {{Tcheck}}>
+              <label for="tab-3">Tab Three</label>
+              <div class="content">
+                <a href="/wilderness" class="link"><div class="text" >wilderness</div></a>
+
+                <a href="/crystal" class="link" style="display:{{MCdisplay}};"><div class="text" >Magic Crystal</div></a>
+
+                <a href="/techtree" class="link" style="display:{{TTdisplay}};"><div class="text" >Tech Tree</div></a>
+
+
+                
+
+                  
+                
+               
+                  
+              </div>
+            </div> 
+        </div>       
+
+        <div class="exploredarea">World explored : {{exploredarea}} / {{Totalarea}} m <sup>2</sup> ({{percantage}} %)</div>
+        
+
+        
+      <div class="location">
+          <input type="checkbox" id="some-checkbox">
+          <label for="some-checkbox" id="somecheckbox">X</label>
+          <div class="checkbox-hack-content">
+            <div class="otherinfo">
+              <div class="frame">
+                  <a href="https://github.com/inventor321/nomadic-tribe" class="custom-btn btn-About" style="text-decoration: none; ">Learn More</a>
+  
+              </div>
+            </div>
+          </div>
+          
+      </div>
+    </body> 
+   
+
+</html>
+
+

@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='techtree.css') }}">
+
+</head>
+<body>
+
+    
+        <div class="bbackground">
+            <a href="http://127.0.0.1:5000/menu/" class="ReturnButton">Return to Camp</a>
+            <div class="background"> 
+                <div class="Title">Tools</div>
+                <form action="" method="POST">
+                <div class="contain" id="StoneContainer">
+                    <input type="submit" class="Upgrade-btn" name="Stonetools" id="Stone" value="Stone tools">
+                    <div class="popup">
+                        25 science<br>25 wood<br><h2>Unlocks Stone tools</h2><br>
+                    </div>
+                    <div class="bought" style="display:{{Stonetoolsdisplay}};"></div>
+
+                </div>
+
+                <hr class="line" id="STtoIT" style="display:{{UpgradeIrontoolsdisplay}};">
+
+                <div class="contain" id="IronContainer" style="display:{{UpgradeIrontoolsdisplay}};">
+                    <input type="submit" class="Upgrade-btn" name="Irontools" id="Iron" value="Iron tools">
+                    <div class="popup">
+                        50 science<br>25 wood<br><h2>Unlocks Iron tools</h2><br>
+                    </div>
+                    <div class="bought" style="display:{{Irontoolsdisplay}};"></div>
+
+                </div>
+
+                <hr class="line" id="ITtoST" style="display:{{UpgradeSteeltoolsdisplay}};">
+
+                <div class="contain" id="SteelContainer" style="display:{{UpgradeSteeltoolsdisplay}};">
+                    <input type="submit" class="Upgrade-btn" name="Steeltools" id="Steel" value="Steel tools">
+                    <div class="popup">
+                        75 science<br>25 wood<br><h2>Unlocks Steel tools</h2><br>
+                    </div>
+                    <div class="bought" style="display:{{Steeltoolsdisplay}};"></div>
+
+                </div>
+
+            
+                
+                <div class="contain" id="RessourceContainer">
+                <input type="submit" class="Upgrade-btn" name="Ressourceproduction" id="Ressource" value="Ressource production">
+                <div class="popup">25 science<br>50 food <br><h1>+50% ressources produced by population</h1> </div>
+                <div class="bought" style="display:{{Ressourceproductiondisplay}};"></div>
+                </div>
+                
+
+                <div class="contain" id="HuntingStrategiesContainer">
+                <input type="submit" class="Upgrade-btn" name="HuntingStrategies" id="HuntingStrategies" value="Hunting Strategies">
+                <div class="popup">10 science<br>20 food<h2>Unlocks Hunting</h2>Animals are a better source of food than just berries.<h1>+25% food when gathering ressources</h1></div>
+                <div class="bought" style="display:{{HuntingStrategiesdisplay}};"></div>
+                </div>
+                
+                <hr class="line" id="HStoS" style="display:{{UpgradeSpearsdisplay}};">
+
+                <div class="contain" id="SpearsContainer"  style="display:{{UpgradeSpearsdisplay}};"> 
+                <input type="submit" class="Upgrade-btn" name="Spears" id="Spears" value="Spears">
+                <div class="popup">
+                    40 science<br>60 wood<br>
+                    <h2>Unlocks Spears:</h2>
+                    Throwing spears is more effecient than chasing your food.
+                    <h1>+30% food when gathering ressources</h1>
+                </div>
+                <div class="bought" style="display:{{Spearsdisplay}};"></div>
+                </div>
+
+                <hr class="line" id="StoA" style="display:{{UpgradeAtlatldisplay}};">
+
+                <div class="contain" id="AtlatlContainer"  style="display:{{UpgradeAtlatldisplay}};"> 
+                    <input type="submit" class="Upgrade-btn" name="Atlatl" id="Atlatl" value="Atlatl">
+                    <div class="popup">
+                        100 science<br>160 wood<br>
+                        <h2>Unlocks Atlatl:</h2>
+                        Increases the range of the spears you throw.
+                        <h1>+30% food when gathering ressources</h1>
+                    </div>
+                    <div class="bought" style="display:{{Atlatldisplay}};"></div>
+                </div>
+
+                <div class="contain" id="SackContainer"> 
+                    <input type="submit" class="Upgrade-btn" name="Sack" id="Sack" value="Sack">
+                    <div class="popup">
+                        100 science<br>160 wood<br>
+                        <h2>Unlocks Sack:</h2>
+                        Increases the range of the spears you throw.
+                        <h1>+30% food when gathering ressources</h1>
+                    </div>
+                    <div class="bought" style="display:{{Sackdisplay}};"></div>
+                </div>
+
+                <hr class="line" id="StoH" style="display:{{UpgradeHutdisplay}};">
+
+                <div class="contain" id="HutContainer"  style="display:{{UpgradeHutdisplay}};"> 
+                    <input type="submit" class="Upgrade-btn" name="Hut" id="Hut" value="Hut">
+                    <div class="popup">
+                        100 science<br>160 wood<br>
+                        <h2>Unlocks Hut:</h2>
+                        Allows you to accomedate people into your tribe.
+                        <h1>+4 population space</h1>
+                    </div>
+                    <div class="bought" style="display:{{Hutdisplay}};"></div>
+                </div>
+                
+
+            </form>
+            </div>
+        </div>
+</body>
+</html>

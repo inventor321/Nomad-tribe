@@ -1,0 +1,239 @@
+:root {
+    --clr-neon: hsl(0 100% 100%);
+    --clr-bg: hsl(0 100% 0%);
+    --size:15vw;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: grid;
+
+    background: var(--clr-bg);
+    
+    color: var(--clr-neon);
+    padding-right: 10vw;
+    overflow: hidden;
+    
+}
+
+.neon-button {
+    position: fixed;
+    font-size: 4vw;
+    top: 60%;
+    left: 50%;
+
+    padding: 0.25em 1em;
+    
+    transform: translate(-20%,-200%);
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    text-align: center;
+    border-radius: 0.25em;
+  
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  
+    
+  
+    position: relative;
+}
+
+.neon-button::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 260%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+}
+
+.neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    opacity: 0;
+    background-color: transparent;
+    z-index: -1;
+    transition: opacity 500ms linear;
+}
+
+.neon-button:hover,
+.neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+}
+
+.neon-button:hover::before,
+.neon-button:focus::before {
+    opacity: 0;
+}
+.neon-button:hover::after,
+.neon-button:focus::after {
+    opacity: 1;
+}
+
+
+
+.topcave{
+    position: fixed;
+    background: white;
+    top: 49.25%;
+    left: 50%;
+    height: 7vw ;
+    width: 14vw;
+    border-top-left-radius: 14vw ;
+    border-top-right-radius: 14vw ;
+    transform:translate(-50%,-150%);
+    
+    visibility: hidden;
+    display: inline-block;
+    z-index: -1;
+    opacity: 0;
+}
+
+.neon-button:hover + .topcave {
+    visibility: visible;
+    
+    opacity: 1;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    transition: opacity 500ms linear;
+    
+}
+
+.neon-button:after + .topcave {
+    visibility: hidden;
+    
+    opacity: 1;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    transition: opacity 500ms linear;
+}
+
+
+
+
+.bottomcave{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-55%);
+    background-color: white;
+    width: 14vw;
+    height: 7vw;
+    visibility: hidden;
+    z-index: -1;
+    opacity: 0;
+    
+}
+
+.neon-button:hover + .topcave + .tshadow + .bottomcave {
+    visibility: visible;
+    
+    opacity: 1;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    
+    transition: opacity 500ms linear;
+}
+
+
+
+
+.tshadow{
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 92.181%;
+    left: 43.05%;
+    
+    background:linear-gradient(180deg, #bababa 100%, #a3a3a3 100%);
+    transform:  perspective(1em) rotateZ(180deg)  rotatex(-3deg)  scale(8.735, 3);
+    
+    opacity: 0.7;
+    visibility: hidden;
+}
+
+.neon-button:hover + .topcave + .topcave{
+    visibility: hidden ;
+}
+
+.neon-button:hover::before + .topcave + .topcave,
+.neon-button:focus::before + .topcave + .topcave{
+    opacity: 0;
+}
+
+
+
+.bshadow{
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--clr-neon);
+    top: 51%;
+    left: 36%;
+    width: 28vw;
+    height: 10vw;
+    
+    background: linear-gradient(180deg, white 0%, #bababa 100%);
+    transform:  perspective(1em) rotatex(15deg) ;
+
+    opacity: 0.7;
+    visibility: hidden;
+
+}
+
+.neon-button:hover + .topcave + .topcave + .bottomcave +.bottomcave{
+    visibility: visible ;
+}
+
+.neon-button:hover::before + .topcave + .topcave + .bottomcave +.bottomcave,
+.neon-button:focus::before + .topcave + .topcave + .bottomcave +.bottomcave{
+    opacity: 0;
+}
+
+  
+.center{
+    width: 3vw;
+    position: fixed;
+    color: blue;
+    top: 50%;
+    z-index: 2;
+    left: 50%;
+}
+
+.hiddentext{
+    position: fixed;
+    color: black;
+    font-size: 4vw;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    font-size: 8vw;
+    transform: translate(-50%) perspective(1em) rotateX(40deg) scale(.7, 1);
+    cursor: default;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.neon-button:hover + .topcave + .topcave + .bottomcave +.bottomcave + .hiddentext{
+    visibility: visible ;
+    transition: opacity 500ms linear;
+    opacity: 1;
+}

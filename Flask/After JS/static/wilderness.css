@@ -4,7 +4,8 @@
 }
 
 body{
-        background-color: #eee;
+        background-color: #222;
+        color: #eee;
 }
 
 .mainbackground{
@@ -45,7 +46,6 @@ body{
         width: 100px;
         height: 200px;
         background:aqua; 
-        animation: Attack 1.5s ease;
         animation-delay: 0.75s; 
 }
 
@@ -137,6 +137,7 @@ body{
         z-index: 999;
         visibility: hidden;
         border: 1px #222 solid;
+        color: black;
 }
 
 @keyframes ResultofBattle {

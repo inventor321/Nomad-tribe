@@ -1,0 +1,50 @@
+<html>
+
+
+<head>
+
+  <title>NUMBER GO UP</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,600,400italic,600italic,700,700italic,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='testt.css') }}">  
+  
+    <style>
+        
+
+
+
+    
+    </style>  
+
+
+</head>
+ 
+<body onload='count(0), count(1)'>
+</script>
+  <p id='theNumber'>0</p><br>
+
+
+  <div><p id='W'>0</p>    <p class="clickable" onclick="increase(0, 'green', 'Wood', {{WW}}, {{FW}}, {{population}})">+WW</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(0,'red', 'Wood')">-WW</p></div>
+  <div><p id='F'>0</p>     <p class="clickable" onclick="increase(1, 'green', 'Food', {{WW}}, {{FW}}, {{population}})">+FW</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(1,'red', 'Food')">-FW</p></div><br>
+  
+  <script src="{{url_for('static', filename='js/Testjs.js')}}"></script>
+
+
+  <!--
+  <div class="qty-holder"><button class="qty-dec">-</button><input class="qty-adj" type="number" value="1" disabled /><button class="qty-inc">+</button></div>
+  <div class="qty-holder"><button class="qty-dec">-</button><input class="qty-adj" type="number" value="1" disabled /><button class="qty-inc">+</button></div>
+
+  <button type="button" onclick="sendUserInfo('W', 1)">Send user info </button> 
+  -->
+  <div class="background-chat">
+    <div class="chat" id="chat"> 
+        
+            <h2 class="event">You wake up, alone, in the middle of an unknown forest.</h2>
+        
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

@@ -11,7 +11,7 @@
             <style>
             .WoodResincome{
                 --u:{{wood}};
-
+ 
                 --n:{{wood+WW}};
                 
 
@@ -22,6 +22,12 @@
                 
 
             }
+            .LeatherResincome{
+                --u:{{Leather}};
+                --n:{{Leather}};
+                
+
+            }
 
 
             
@@ -29,13 +35,13 @@
             
         </head>
              
-    <body> 
+    <body onload='count(0), count(1)'> 
             
             <div class="background-chat">
-                <div class="chat">
-                    {% for msg in chat %}
-                        <h2 class="event">{{ msg }}</h2>
-                    {% endfor %}
+                <div class="chat" id="chat"> 
+                    
+                        <h2 class="event" id="LatestText">You wake up, alone, in the middle of an unknown forest.</h2>
+                    
                 </div>
             </div>
             <h1 style="text-shadow: 0px 0px 5px white;">Nomadic Camp</h1>              
@@ -45,14 +51,11 @@
             <div class="tab">
               <input type="radio" id="tab-1" name="tab-group-1" {{Gcheck}}>
               <label for="tab-1">Outside</label>
-              <div class="content">
-                <form action="." method="POST">
+              <div class="content"><form action=".">
                     <div class="progress">
-                        <div class="progress-value"></div>
-                        <div class="value"></div>
-                        <input class="butt" type="submit" value="Gather" name="Gather">
-                        <input class="butth" type="submit" value="Gather" name="Gather" style="visibility: {{replacement}};">
-                        <div class="butthbackground" style="visibility: {{replacement}};"></div>
+                        <div class="progress-value" id="loading"></div>
+                        <button onclick="Gather();" id="GatherButton">Gather</button>
+
                     </div>
                 </form>
               </div>
@@ -70,8 +73,9 @@
 
                         <div class="ressources" style="z-index: 10;">
                             <div class="population">Population : {{population}} / {{populationmax}}</div><div style="position: absolute;left: 190px;">Workers</div><br>
-                            <div class ="income WoodResincome">Wood : </div> <input class="buttons" type="submit" value="+WW" name="+WW"> <div class="workers">{{WW}}</div><input class=" R buttons" type="submit" value="-WW" name="-WW"><br>
-                            <div class ="income FoodResincome">Food : </div><input class=" buttons" type="submit" value="+FW" name="+FW"><div class="workers">{{FW}}</div><input class=" R buttons" type="submit" value="-FW" name="-FW"><br>
+                            <div class="rezz" style="top:20px;">Wood <div class="rezzources" id='W'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(0, 'green', 'Wood', {{WW}}, {{FW}}, {{population}})">+</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(0,'red', 'Wood')">-</p></div></div>
+                            <div class="rezz" style="top:45px;">Food  <div class="rezzources" id='F'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(1, 'green', 'Food', {{WW}}, {{FW}}, {{population}})">+</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(1,'red', 'Food')">-</p></div></div><br>
+                            <br><br><br><br><div class ="income LeatherResincome">Leather : </div><br>
                         </div>
 
                         <div class="cta-container sword" style="visibility: {{WSwvis}};">
@@ -178,6 +182,45 @@
                               <input type="submit" class="label" value="Steel Spear" name="Steel Spear">
                             </div>
                           </div>
+                          <div class="cta-container Atlatl" style="visibility: {{Atlatlvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Atlatl" name="Atlatl">
+                            </div>
+                          </div>
+                          <div class="cta-container Sack" style="visibility: {{Sackvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Sack" name="Sack">
+                            </div>
+                          </div>
+                          <div class="cta-container Hut" style="visibility: {{Hutvis}};">
+                            <div class="button">
+                              <div class="square-front">
+                                <div class="relative-box">
+                                    <span class="line line-top"></span>
+                                    <span class="line line-right"></span>
+                                    <span class="line line-bottom"></span>
+                                    <span class="line line-left"></span>
+                                </div>
+                              </div>
+                              <input type="submit" class="label" value="Hut" name="Hut">
+                            </div>
+                          </div>
 
 
 
@@ -236,10 +279,10 @@
                
                   
               </div>
-            </div>
+            </div> 
         </div>       
 
-        <div class="exploredarea">World explored : {{exploredarea}} / {{Totalarea}} ({{percantage}} %)</div>
+        <div id="ExploredLand">World explored : ??? m ( ??? % )</div>
         
 
         
@@ -249,13 +292,16 @@
           <div class="checkbox-hack-content">
             <div class="otherinfo">
               <div class="frame">
-                  <button class="custom-btn btn-About">Learn More</button>
+                  <a href="https://github.com/inventor321/nomadic-tribe" class="custom-btn btn-About" style="text-decoration: none; ">Learn More</a>
   
               </div>
             </div>
           </div>
           
       </div>
+
+      <script src="{{url_for('static', filename='js/MainPage.js')}}"></script>
+
     </body> 
    
 
