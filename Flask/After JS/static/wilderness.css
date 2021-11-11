@@ -148,3 +148,18 @@ body{
                 visibility: visible;
         }
 }
+
+
+
+#Health{
+        color:red;
+        display: inline;
+        position: absolute;
+        top:280px;
+}
+
+#eHealth{
+        display: inline;
+        position: absolute;
+        top:280px;
+}

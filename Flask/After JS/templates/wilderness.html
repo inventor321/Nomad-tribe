@@ -2,9 +2,9 @@
 <html>
         <head>
             <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='wilderness.css')}}">
-
+<!--
             <style>
-
+ 
                 @property --num {
                         syntax: "<integer>";
                         initial-value: {{lh}};
@@ -45,7 +45,7 @@
                 }
                 .ECharacter{
                     animation: EAttack {{eAttackSpeed}}s;
-                    animation-delay: .5s;
+                    animation-delay: 0.5s;
                     animation-iteration-count: {{eiterationcount}};
                     
                 }       
@@ -56,13 +56,13 @@
                 }
 
             </style>
-
+-->
         </head>
             
-  <body> 
-        <div>   Coming soon! (PvE + Story/Quest) </div>
+    <body onload='LoadBattle()'> 
+        <div id="ann">   Coming soon! (PvE + Story/Quest) </div>
     
-        <div class="log">╭⸻⸻╮</div>
+        <div class="log" id="log">╭⸻⸻╮</div>
 
         <div class="mainbackground">
 
@@ -70,16 +70,17 @@
 
                 <div class="Character"></div>   
                 <div class="Charactername">You</div>
-                <div class="stats"> <div style="color:red; display: inline;">Health: <div class="hp you"></div>/{{Health}} </div><br>Attack : {{WeaponIndex}}</div>
-
+                <div id="Health"><div class="hp">a</div></div>
+                <div class="stats" id="Attack">a</div>
             </div>
 
 
             <div class="Enemy">
                  
                 <div class="ECharacter"></div>
-                <div class="E Charactername">{{EnemyEntity}}</div>
-                <div class="E stats"> <div style="color:red; display: inline;">Health: <div class="hpe ene"></div>/{{eHealth}} </div><br>Attack : {{eAttack}}</div>
+                <div class="E Charactername" id="eCharacterName">{{EnemyEntity}}</div>
+                <div class = "E Health" id="eHealth"></div>
+                <div class="E stats" id="eAttack"></div>
             </div>
             <div class="BattleResult"> {{BattleReport}} {{BattleWood}} wood and {{BattleFood}} food from the fight <br><a href="http://127.0.0.1:5000/menu/">Return home</a></div>
             
@@ -88,7 +89,7 @@
 
     </body> 
 
-
+    <script src="{{url_for('static', filename='js/Wilderness.js')}}"></script>
 </html>
 
 

@@ -7,7 +7,7 @@ var ExploredArea = 0,
     TotalArea = '???';
 
 var chat = document.getElementById("chat");
-const HTwoElment = document.createElement("H2");
+const HTwoElment = document.createElement("H2"); 
 const BRElment = document.createElement("br");
 var i=0;
 
@@ -22,7 +22,6 @@ function increase(id,clr,workers,WW,FW,pop) {
         sendUserInfo(ResWNames[id],1)
     }
     document.getElementById(ResWNames[id]).style.color = clr;
-    console.log
     
 }
 
@@ -51,7 +50,6 @@ function sendUserInfo(W, opertaion){
     request.open('POST',`/processUserInfo/${JSON.stringify(UserInfo)}`)
     request.onload = () => {
         const FlaskMessage = request.responseText
-        console.log(FlaskMessage)
     }   
     request.send()
 
