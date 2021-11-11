@@ -1,10 +1,11 @@
-// [ 0 ,         1          ,    2  ,    3  ,      4      ]
-// [name, Weight of spawning, Damage, Health, Attack Speed]
+// [ 0 ,         1          ,    2  ,    3  ,      4      ,     5    ,      6      ]
+// [name, Weight of spawning, Damage, Health, Attack Speed, Food Loot, Leather Loot]
 const Enemies = [
-    ["Rat", 5, 1, 3, 500],
-    [ "Group of Rats", 4, 3, 10, 750], 
-    ["Huge Rat", 2, 5, 15, 1000], 
-    ["Wolf", 1, 10, 40, 1500]
+    ["Rat", 5, 1, 3, 500, 1, 0],
+    [ "Group of Rats", 4, 3, 10, 750, 3, 1], 
+    ["Huge Rat", 2, 5, 15, 1000, 5, 2], 
+    ["Wolf", 1, 10, 22, 1250, 7, 5],  
+    ["Stag", 0, 20, 35, 1750, 20, 10]
 ]
 
 
@@ -27,7 +28,7 @@ function Fight(){
     let i = 0;
     let CurrentHealth = Health;
     let CurrenteHealth = ChosenEnemy[3];
-    setInterval(function() {
+    var fighting = setInterval(function() {
         if(250*i%ChosenEnemy[4] == 0){
             CurrentHealth = CurrentHealth - ChosenEnemy[2];
             document.getElementById("Health").innerHTML = "Health : " + CurrentHealth + "/20";
@@ -35,6 +36,16 @@ function Fight(){
         if(250*i%AttackSpeed == 0){
             CurrenteHealth = CurrenteHealth - WeaponDamage;
             document.getElementById("eHealth").innerHTML = "Health : " + CurrenteHealth + "/" + ChosenEnemy[3];
+        }
+        if(CurrentHealth <= 0){
+            clearInterval(fighting);
+            population -= 1;
+            WeaponDamage = 1;
+        } 
+        if( CurrenteHealth <= 0){
+            clearInterval(fighting);
+            ResW[1] += ChosenEnemy[5];
+            ResW[2] += ChosenEnemy[6]
         }
         i+=1
     }, 250);
@@ -70,8 +81,9 @@ function AssingWeights(WeaponDamage){
     let GORWeight = 3;
     let GRWeight = WeaponDamage;
     let WWeight = 0;
+    let SWeight = 0;
 
-    const Weights = [RatWeight, GORWeight, GRWeight, WWeight];
+    const Weights = [RatWeight, GORWeight, GRWeight, WWeight, SWeight];
 
     for (let i = 0; i < Enemies.length; ++i) {
         console.log("1  :" + Weights[i]);

@@ -10,6 +10,7 @@ var chat = document.getElementById("chat");
 const HTwoElment = document.createElement("H2"); 
 const BRElment = document.createElement("br");
 var i=0;
+var population = 5;
 
 function increase(id,clr,workers,WW,FW,pop) {
     if(ResW[0]+ResW[1]>=pop){
@@ -47,7 +48,7 @@ function sendUserInfo(W, opertaion){
 
     }
     const request = new XMLHttpRequest()
-    request.open('POST',`/processUserInfo/${JSON.stringify(UserInfo)}`)
+    request.open('POST',`/processUserInfo/${JSON.stringify(UserInfo)}`) 
     request.onload = () => {
         const FlaskMessage = request.responseText
     }   
@@ -56,9 +57,9 @@ function sendUserInfo(W, opertaion){
 }
 
 
-ResTotal = [0,0];
+ResTotal = [0,0,0];
 WorkingWorkers = [0,0];
-Res=["W","F"]
+Res=["W","F","L"]
 function count(id){
     setInterval(function() {
         ResTotal[id] = ResTotal[id] + WorkingWorkers[id];
