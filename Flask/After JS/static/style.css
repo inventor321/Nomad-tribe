@@ -550,18 +550,15 @@ body {
 
 
 
-
-
-
-
-
 /*Buttons : Gather, Hunt*/
 
 .progress {
         position: absolute;
-        top:100%;
-        left:50%;
-        transform: translate(-50%,450%);
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         background: rgba(255,255,255,0.1);
         background-color: #222;
         height: 40px;
@@ -673,6 +670,7 @@ body {
         padding: 20px;
         border: 1px solid #ccc;
         overflow: hidden;
+        justify-content: center;
 }
 .content > * {
         opacity: 0;
@@ -985,8 +983,8 @@ html, body {
   background-color: white;
 }
 .button:hover .label:before {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 0;
+  
 }
 .button:hover .square-front .line-top:before, .button:hover .square-front .line-bottom:before, .button:hover .square-front .line-left:before, .button:hover .square-front .line-right:before {
   top: 0;
@@ -1210,13 +1208,21 @@ p{
 }
 
 #GatherButton:disabled{
-        position:absolute;
-        left: 0;
-        top: 0;
-        height: 40px;
-        width: 150px;
+
         background-color:#eee;
         color: black;
-        z-index:31;
-        opacity: 0.7;
+
+}
+
+#WoodenSwordButton{
+        visibility: visible;
+}
+#StoneSwordButton{
+        visibility: hidden;
+}
+#IronSwordButton{
+        visibility: hidden;
+}
+#SteelSwordButton{
+        visibility: hidden;
 }

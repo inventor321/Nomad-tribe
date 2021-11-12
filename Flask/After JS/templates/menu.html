@@ -36,7 +36,7 @@
         </head>
              
     <body onload='count(0), count(1)'> 
-            
+
             <div class="background-chat">
                 <div class="chat" id="chat"> 
                     
@@ -51,13 +51,14 @@
             <div class="tab">
               <input type="radio" id="tab-1" name="tab-group-1" {{Gcheck}}>
               <label for="tab-1">Outside</label>
-              <div class="content"><form action=".">
+
+              <div class="content">
                     <div class="progress">
                         <div class="progress-value" id="loading"></div>
                         <button onclick="Gather();" id="GatherButton">Gather</button>
 
                     </div>
-                </form>
+                
               </div>
             </div>
             <div class="tab">
@@ -65,7 +66,7 @@
                 <label for="tab-2">Camp</label>
                 
                 <div class="content">
-                    <form action="." method="POST">
+                    
                         <div class="Items">
                             
  
@@ -73,12 +74,12 @@
 
                         <div class="ressources" style="z-index: 10;">
                             <div class="population">Population : {{population}} / {{populationmax}}</div><div style="position: absolute;left: 190px;">Workers</div><br>
-                            <div class="rezz" style="top:20px;">Wood <div class="rezzources" id='W'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(0, 'green', 'Wood', {{WW}}, {{FW}}, {{population}})">+</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(0,'red', 'Wood')">-</p></div></div>
-                            <div class="rezz" style="top:45px;">Food  <div class="rezzources" id='F'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(1, 'green', 'Food', {{WW}}, {{FW}}, {{population}})">+</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(1,'red', 'Food')">-</p></div></div><br>
+                            <div class="rezz" style="top:20px;">Food <div class="rezzources" id='F'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(0, 'green', 'Food', {{WW}}, {{FW}}, {{population}})">+</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(0,'red', 'Food')">-</p></div></div>
+                            <div class="rezz" style="top:45px;">Wood  <div class="rezzources" id='W'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(1, 'green', 'Wood', {{WW}}, {{FW}}, {{population}})">+</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(1,'red', 'Wood')">-</p></div></div><br>
                             <br><br><br><br><div class ="income LeatherResincome">Leather : </div><br>
                         </div>
 
-                        <div class="cta-container sword" style="visibility: {{WSwvis}};">
+                        <div class="cta-container" id="WoodenSwordButton">
                             <div class="button">
                               <div class="square-front">
                                 <div class="relative-box">
@@ -88,11 +89,11 @@
                                     <span class="line line-left"></span>
                                 </div>
                               </div>
-                              <button class="label" id="WoodenSword" disabled> Wooden Sword </button>
+                              <button class="label" id="WoodenSword" onclick="UpgradeWeapon()"> Wooden Sword </button>
                               <!--<input type="submit" class="label" value="Wooden Sword" name="Wooden Sword" disabled>-->
                             </div>
                           </div>
-                          <div class="cta-container sword" style="visibility: {{StoSwvis}};">
+                          <div class="cta-container" id="StoneSwordButton">
                             <div class="button">
                               <div class="square-front">
                                 <div class="relative-box">
@@ -102,10 +103,10 @@
                                     <span class="line line-left"></span>
                                 </div>
                               </div>
-                              <input type="submit" class="label" value="Stone Sword" name="Stone Sword">
+                              <button class="label" id="StoneSword" onclick="UpgradeWeapon()"> Stone Sword </button>
                             </div>
                           </div>
-                          <div class="cta-container sword" style="visibility: {{ISwvis}};">
+                          <div class="cta-container" id="IronSwordButton">
                             <div class="button">
                               <div class="square-front">
                                 <div class="relative-box">
@@ -115,10 +116,10 @@
                                     <span class="line line-left"></span>
                                 </div>
                               </div>
-                              <input type="submit" class="label" value="Iron Sword" name="Iron Sword">
+                              <button class="label" id="IronSword" onclick="UpgradeWeapon()"> Iron Sword </button>
                             </div>
                           </div>
-                          <div class="cta-container sword" style="visibility: {{SteSwvis}};">
+                          <div class="cta-container" id="SteelSwordButton">
                             <div class="button">
                               <div class="square-front">
                                 <div class="relative-box">
@@ -128,7 +129,7 @@
                                     <span class="line line-left"></span>
                                 </div>
                               </div>
-                              <input type="submit" class="label" value="Steel Sword" name="Steel Sword">
+                              <button class="label" id="SteelSword" onclick="UpgradeWeapon()"> Steel Sword </button>
                             </div>
                           </div>
                           <div class="cta-container spear" style="visibility: {{WSpvis}};">
@@ -225,7 +226,7 @@
 
 
 
-                    </form> 
+                    
                     <div class="firebackground">
 
                     <div class="Alight"></div>

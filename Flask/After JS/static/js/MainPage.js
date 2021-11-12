@@ -1,7 +1,7 @@
 var FWbutton = document.getElementById("FW")
 var WWbutton = document.getElementById("WW"),
     ResW = [0,0];
-    ResWNames = ["WW","FW"];
+    ResWNames = ["FW","WW"];
 
 var ExploredArea = 0,
     TotalArea = '???';
@@ -57,9 +57,9 @@ function sendUserInfo(W, opertaion){
 }
 
 
-ResTotal = [0,0,0];
+ResTotal = [0,0,0,0,0,0];
 WorkingWorkers = [0,0];
-Res=["W","F","L"]
+Res=["F","W","Sto","I", "Ste","L"]
 function count(id){
     setInterval(function() {
         ResTotal[id] = ResTotal[id] + WorkingWorkers[id];
@@ -100,8 +100,8 @@ function Gather(){
     element.classList.remove("progress-value");
     void element.offsetWidth;
     element.classList.add("progress-value");
-    ResTotal[0] += Randint(1, 6);
-    ResTotal[1] += Randint(1, 3);
+    ResTotal[0] += Randint(1, 3);
+    ResTotal[1] += Randint(1, 6);
     
     const BRElment = document.createElement("br");
     const HTwoElment = document.createElement("H2");
@@ -122,7 +122,34 @@ function Explore()
      
 }
 
-function Randint(a, b) { 
+function Randint(a, b) {
     return Math.floor(Math.random() * (1 + a - b) + b)
 }
-  
+
+var SwordIndex = 0;
+// weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
+const Weapons = [["Wooden", 1, 20, 0, 0, 0], ["Stone", 5, 15, 15, 0, 0], ["Iron", 9, 25, 0, 15, 0], ["Steel", 13, 30, 0, 0, 15]]
+function UpgradeWeapon(){
+    let EnoughRes = true;
+
+    for (let i = 1; i < Res.length-1; i++) {
+        console.log()
+        if (ResTotal[i] < Weapons[SwordIndex][i]){
+            EnoughRes = false;
+        }
+    }
+
+    if(EnoughRes){
+        
+        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="hidden";
+        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.opacity=0;
+        SwordIndex += 1;
+        for (let i = 1; i < Res.length-1; i++) {
+            ResTotal[i] -= Weapons[SwordIndex][i];
+        }
+        
+        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="visible";
+    }
+
+
+}
