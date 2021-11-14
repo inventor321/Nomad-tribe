@@ -1,3 +1,5 @@
+var Run = 0;
+
 //Pop
 var population = 5;
 
@@ -5,9 +7,9 @@ var population = 5;
 var FWbutton = document.getElementById("FW")
 var WWbutton = document.getElementById("WW"),
 
-ResWNames = ["FW","WW","StoW","IW","SteW","LW",],
-ResTotal = [0,0,0,0,0,0],
-ResW = [0,0],
+ResWNames = ["FW","WW","StoW","IW","SteW","LW",];
+ResTotal = [0,0,0,0,0,0];
+ResW = [0,0,0,0,0,0];
 Res=["F","W","Sto","I", "Ste","L"];
 
 
@@ -26,10 +28,36 @@ var chat = document.getElementById("chat");
 const HTwoElment = document.createElement("H2"); 
 const BRElment = document.createElement("br");
 
+function CheckRun(){
+    if(Run==0){
+        console.log("running First save")
+        console.log(Run)
+        SaveValues()
+        Run += 1;
+    }
+}
 
-function SaveValues(link){
+function Start(){
+    LoadValues();
+    count(0);
+    count(1);
+}
+vars = ["population", "ResW", "ResTotal", "SwordIndex", "ExploredArea"]
+
+function Redirect(link){
+    SaveValues()
+    window.location.href = link;
+}
+
+function ClearStorage(){
+    localStorage.clear();
+
+}
+
+function SaveValues(){
     console.log("saving...")
     //pop
+    
     localStorage.setItem("population", JSON.stringify(population));
 
     //Res and workers
@@ -44,21 +72,33 @@ function SaveValues(link){
     //ExploredArea
     localStorage.setItem("ExploredArea", JSON.stringify(ExploredArea));
 
-
-    window.location.href = link;
+    localStorage.setItem("Run", JSON.stringify(Run));
 
 }
 
 function LoadValues(){
 
-    //pop
+    /*for (var key in localStorage){
+        console.log(key)
+    }
+
+    console.log("1")
+
+    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+        console.log( localStorage.getItem( localStorage.key( i ) ) );
+    }*/
+
+    if (localStorage.getItem("Run") === null){
+        CheckRun()
+    }
+
     population = JSON.parse(localStorage.getItem("population"));
 
     //Res and workers
-    ResWNames = JSON.parse(localStorage.getItem("ResWNames"));
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
+    console.log("Res Total : " + ResTotal)
     ResW = JSON.parse(localStorage.getItem("ResW"));
-    Res = JSON.parse(localStorage.getItem("Res"));
+    console.log("Res workers : " + ResW)
 
     //Weapons
 
@@ -66,6 +106,8 @@ function LoadValues(){
 
     //ExploredArea
     ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
+
+    Run = JSON.parse(localStorage.getItem("Run"));
 
 }
 
@@ -92,7 +134,7 @@ function decrease(id,clr,workers) {
         document.getElementById(ResWNames[id]).innerHTML =  ResW[id]; //workers + " Workers " + ResW[id];
         sendUserInfo(ResWNames[id],-1)
     }
-    document.getElementById(TotalNames[id]).style.color = clr;
+    document.getElementById(ResWNames[id]).style.color = clr;
 }
 
 

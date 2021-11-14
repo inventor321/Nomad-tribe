@@ -35,7 +35,7 @@
             
         </head>
              
-    <body onload='count(0), count(1)'> 
+    <body onload='Start()'> 
 
             <div class="background-chat">
                 <div class="chat" id="chat"> 
@@ -58,7 +58,7 @@
                         <button onclick="Gather();" id="GatherButton">Gather</button>
 
                     </div>
-                
+                    <button onclick="ClearStorage();">Clear</button>
               </div>
             </div>
             <div class="tab">
@@ -267,7 +267,7 @@
               <input type="radio" id="tab-3" name="tab-group-1" {{Tcheck}}>
               <label for="tab-3">Tab Three</label>
               <div class="content">
-                <a class="link" onclick="SaveValues('http://127.0.0.1:5000/wilderness')"><div class="text" >wilderness</div></a>
+                <a class="link" onclick="Redirect('http://127.0.0.1:5000/wilderness')"><div class="text" >wilderness</div></a>
 
                 <a href="/crystal" href="#" class="link" style="display:{{MCdisplay}};"><div class="text" >Magic Crystal</div></a>
 

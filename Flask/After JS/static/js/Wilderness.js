@@ -40,13 +40,14 @@ function UnpackValues(){
 
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
     ResW = JSON.parse(localStorage.getItem("ResW"));
-
+    console.log("Res Total : " + ResTotal)
     //Weapons
     //weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
     SwordIndex = JSON.parse(localStorage.getItem("SwordIndex"));
 
     //ExploredArea
     //ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
+    ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
 }
 
 
@@ -59,7 +60,9 @@ function SaveValues(){
     sessionStorage.setItem("ResW", JSON.stringify(ResW));
 
     //Weapons
-    essionStorage.setItem("SwordIndex", JSON.stringify(SwordIndex));
+    sessionStorage.setItem("SwordIndex", JSON.stringify(SwordIndex));
+
+    sessionStorage.setItem("Run", JSON.stringify(Run));
 
 }
 
@@ -88,18 +91,23 @@ function Fight(){
             Weapons[SwordIndex][1] = 1;
             population += 1;
             SwordIndex=0;
+            console.log("Res Total : " + ResTotal)
             SaveValues();
-            setTimeout(GoHome(),2000);
+            setTimeout(function(){
+                GoHome()
+            },2000);
             
 
         } 
         if( CurrenteHealth <= 0){
             CurrenteHealth=0;
             clearInterval(fighting);
-            ResW[0] += ChosenEnemy[5];
-            ResW[5] += ChosenEnemy[6];
+            ResTotal[0] += ChosenEnemy[5];
+            ResTotal[5] += ChosenEnemy[6];
             SaveValues();
-            setTimeout(GoHome(),2000);
+            setTimeout(function(){
+                GoHome()
+            },2000);
 
         }
         i+=1
@@ -133,8 +141,8 @@ function ChoseEnemy(){
 
 function AssingWeights(WpnD){
     let RatWeight = 10;
-    let GORWeight = 3;
-    let GRWeight = WpnD;
+    let GORWeight = 0;
+    let GRWeight = 0;
     let WWeight = 0;
     let SWeight = 0;
 
