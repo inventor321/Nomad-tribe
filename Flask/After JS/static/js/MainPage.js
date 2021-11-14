@@ -1,7 +1,7 @@
 var Run = 0;
 
 //Pop
-var population = 5;
+var Population = 5;
 
 //Ressources, Workers  and their buttons
 var FWbutton = document.getElementById("FW")
@@ -20,7 +20,7 @@ var ExploredArea = 0,
 //Weapons
 var SwordIndex = 0;
 // weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
-const Weapons = [["Wooden", 1, 20, 0, 0, 0], ["Stone", 5, 15, 15, 0, 0], ["Iron", 9, 25, 0, 15, 0], ["Steel", 13, 30, 0, 0, 15]]
+const Weapons = [["Wooden", 5, 20, 0, 0, 0], ["Stone", 9, 15, 15, 0, 0], ["Iron", 13, 25, 0, 15, 0], ["Steel", 17, 30, 0, 0, 15]]
 
 
 //Chat
@@ -39,10 +39,18 @@ function CheckRun(){
 
 function Start(){
     LoadValues();
+    CheckDisplay();
     count(0);
     count(1);
 }
-vars = ["population", "ResW", "ResTotal", "SwordIndex", "ExploredArea"]
+
+
+function CheckDisplay(){
+    document.getElementById(ResWNames[0]).innerHTML =  ResW[0];
+    document.getElementById(ResWNames[1]).innerHTML =  ResW[1];
+    document.getElementById("Population").innerHTML =  "Population : " + Population + " / 5";
+}
+
 
 function Redirect(link){
     SaveValues()
@@ -58,7 +66,7 @@ function SaveValues(){
     console.log("saving...")
     //pop
     
-    localStorage.setItem("population", JSON.stringify(population));
+    localStorage.setItem("Population", JSON.stringify(Population));
 
     //Res and workers
     localStorage.setItem("ResWNames", JSON.stringify(ResWNames));
@@ -92,7 +100,7 @@ function LoadValues(){
         CheckRun()
     }
 
-    population = JSON.parse(localStorage.getItem("population"));
+    Population = JSON.parse(localStorage.getItem("Population"));
 
     //Res and workers
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
@@ -112,28 +120,23 @@ function LoadValues(){
 }
 
 
-function increase(id,clr,workers,WW,FW,pop) {
-    if(ResW[0]+ResW[1]>=pop){
-        document.getElementById(ResWNames[id]).innerHTML = ResW[id]; //workers + " Workers " + ResW[id];// + "  | POP:" + pop + " WW:" + WW + " FW:" + FW;
-
-    }else{
+function increase(id,clr,pop) {
+    if(ResW[0]+ResW[1]<pop){
         ResW[id] += 1;
-        document.getElementById(ResWNames[id]).innerHTML =  ResW[id]; //workers + " Workers " + ResW[id];// + "  | POP:" + pop + " WW:" + WW + " FW:" + FW;
         sendUserInfo(ResWNames[id],1)
     }
+    document.getElementById(ResWNames[id]).innerHTML =  ResW[id]; //workers + " Workers " + ResW[id];// + "  | POP:" + pop + " WW:" + WW + " FW:" + FW;
     document.getElementById(ResWNames[id]).style.color = clr;
     
 }
 
 
-function decrease(id,clr,workers) {
-    if(ResW[id]==0){
-        document.getElementById(ResWNames[id]).innerHTML = ResW[id]; //workers + " Workers " + ResW[id];
-    }else{
+function decrease(id,clr) {
+    if(ResW[id]>0){
         ResW[id] -= 1;
-        document.getElementById(ResWNames[id]).innerHTML =  ResW[id]; //workers + " Workers " + ResW[id];
         sendUserInfo(ResWNames[id],-1)
     }
+    document.getElementById(ResWNames[id]).innerHTML =  ResW[id]; //workers + " Workers " + ResW[id];
     document.getElementById(ResWNames[id]).style.color = clr;
 }
 
@@ -162,7 +165,7 @@ function count(id){
 }
 
 function preciseRound(n,d){
-    return Math.round(n*Math.pow(10,d)) / Math.pow(10,d);
+    return Math.floor(n*Math.pow(10,d)) / Math.pow(10,d);
 }
 function addCommas(nStr)
 {
@@ -213,9 +216,8 @@ function Randint(a, b) {
 
 function UpgradeWeapon(){
     let EnoughRes = true;
-
-    for (let i = 1; i < Res.length-1; i++) {
-        if (ResTotal[i] < Weapons[SwordIndex][i]){
+    for (let i = 2; i < Res.length; i++) {
+        if (ResTotal[i-1] < Weapons[SwordIndex][i]){
             EnoughRes = false;
         }
     }
@@ -224,11 +226,10 @@ function UpgradeWeapon(){
         
         document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="hidden";
         document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.opacity=0;
-        SwordIndex += 1;
-        for (let i = 1; i < Res.length-1; i++) {
-            ResTotal[i] -= Weapons[SwordIndex][i];
+        for (let i = 2; i < Res.length;i++) {
+            ResTotal[i-1] -= Weapons[SwordIndex][i];
         }
-        
+        SwordIndex += 1;
         document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="visible";
     }
 

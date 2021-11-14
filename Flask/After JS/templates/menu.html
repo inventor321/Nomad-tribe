@@ -73,9 +73,9 @@
                         </div>
 
                         <div class="ressources" style="z-index: 10;">
-                            <div class="population">Population : {{population}} / {{populationmax}}</div><div style="position: absolute;left: 190px;">Workers</div><br>
-                            <div class="rezz" style="top:20px;">Food <div class="rezzources" id='F'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(0, 'green', 'Food', {{WW}}, {{FW}}, {{population}})">+</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(0,'red', 'Food')">-</p></div></div>
-                            <div class="rezz" style="top:45px;">Wood  <div class="rezzources" id='W'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(1, 'green', 'Wood', {{WW}}, {{FW}}, {{population}})">+</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(1,'red', 'Wood')">-</p></div></div><br>
+                            <div class="Population" id="Population">Population : {{population}} / {{populationmax}}</div><div style="position: absolute;left: 190px;top:0;">Workers</div><br>
+                            <div class="rezz" style="top:20px;">Food <div class="rezzources" id='F'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(0, 'green', {{population}})">+</p> <p id="FW" >0</p> <p class="clickable" onclick="decrease(0,'red')">-</p></div></div>
+                            <div class="rezz" style="top:45px;">Wood  <div class="rezzources" id='W'> 0 </div>  <div class="Workers"><p class="clickable" onclick="increase(1, 'green', {{population}})">+</p> <p id="WW" >0</p> <p class="clickable" onclick="decrease(1,'red')">-</p></div></div><br>
                             <br><br><br><br><div class ="income LeatherResincome">Leather : </div><br>
                         </div>
 

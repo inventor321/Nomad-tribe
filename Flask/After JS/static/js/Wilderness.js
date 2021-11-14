@@ -32,9 +32,9 @@ function LoadBattle(){
 
 function UnpackValues(){
     //pop
-    //console.log(population)
-    population = JSON.parse(localStorage.getItem("population"));
-    //console.log(population)
+    //console.log(Population)
+    Population = JSON.parse(localStorage.getItem("Population"));
+    //console.log(Population)
 
     //Res and workers
 
@@ -53,7 +53,7 @@ function UnpackValues(){
 
 function SaveValues(){
     //pop
-    sessionStorage.setItem("population", JSON.stringify(population));
+    sessionStorage.setItem("Population", JSON.stringify(Population));
 
     //Res and workers
     sessionStorage.setItem("ResTotal", JSON.stringify(ResTotal));
@@ -87,9 +87,9 @@ function Fight(){
         if(CurrentHealth <= 0){
             CurrentHealth=0;
             clearInterval(fighting);
-            population -= 1;
+            Population -= 1;
             Weapons[SwordIndex][1] = 1;
-            population += 1;
+            Population += 1;
             SwordIndex=0;
             console.log("Res Total : " + ResTotal)
             SaveValues();
