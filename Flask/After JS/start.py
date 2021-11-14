@@ -525,7 +525,10 @@ def update():
 
 
 
-
+@app.route('/stats')
+def Stats():
+    
+    return render_template('Stats.html')
 
 
 
@@ -757,7 +760,6 @@ def test():
 
 @app.route('/testt/')
 def testt():
-  print(WW)
   #name = request.form.get('name')
   #print(name)
   return render_template('testt.html', population=population, WW=WW, FW=FW)
@@ -774,15 +776,15 @@ def processUserInfo(UserInfo):
     X = 1
   elif O == -1:
     X=-1
-  print(f"operation : {O}")
-  print(f"workers : {W}")
+  #print(f"operation : {O}")
+  #print(f"workers : {W}")
   if W == "WW":
     WW += X
   elif W =="FW":
     FW += X
   
-  print("WW", WW)
-  print("FW", FW)
+  #print("WW", WW)
+  #print("FW", FW)
   #name = request.form.get('name')
   #print(name)
   return render_template('testt.html', population=population, WW=WW, FW=FW)

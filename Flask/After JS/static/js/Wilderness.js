@@ -8,20 +8,64 @@ const Enemies = [
     ["Stag", 0, 20, 35, 1750, 20, 10]
 ]
 
-
-var WeaponDamage = 1;
+var HomeURl = window.location.protocol + '//' + window.location.host + '/menu';
+console.log(HomeURl)
+function GoHome(){
+    window.location.replace(HomeURl);
+}
 var Health = 20;
 var AttackSpeed = 1000;
 
 function LoadBattle(){
+    UnpackValues();
+
     LoadPlayer();
     LoadEnemy();
-    setTimeout(Fight(), 1000);
+    setTimeout(function(){
+        Fight()
+    }, 1000);
+    
+    
+    
+    
+}
+
+function UnpackValues(){
+    //pop
+    //console.log(population)
+    population = JSON.parse(localStorage.getItem("population"));
+    //console.log(population)
+
+    //Res and workers
+
+    ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
+    ResW = JSON.parse(localStorage.getItem("ResW"));
+
+    //Weapons
+    //weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
+    SwordIndex = JSON.parse(localStorage.getItem("SwordIndex"));
+
+    //ExploredArea
+    //ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
+}
+
+
+function SaveValues(){
+    //pop
+    sessionStorage.setItem("population", JSON.stringify(population));
+
+    //Res and workers
+    sessionStorage.setItem("ResTotal", JSON.stringify(ResTotal));
+    sessionStorage.setItem("ResW", JSON.stringify(ResW));
+
+    //Weapons
+    essionStorage.setItem("SwordIndex", JSON.stringify(SwordIndex));
+
 }
 
 function LoadPlayer(){
     document.getElementById("Health").innerHTML = "Health : 20/20";
-    document.getElementById("Attack").innerHTML = "Attack : " + WeaponDamage;
+    document.getElementById("Attack").innerHTML = "Attack : " + Weapons[SwordIndex][1];
 }
 
 function Fight(){
@@ -34,25 +78,36 @@ function Fight(){
             document.getElementById("Health").innerHTML = "Health : " + CurrentHealth + "/20";
         }
         if(250*i%AttackSpeed == 0){
-            CurrenteHealth = CurrenteHealth - WeaponDamage;
+            CurrenteHealth = CurrenteHealth - Weapons[SwordIndex][1];
             document.getElementById("eHealth").innerHTML = "Health : " + CurrenteHealth + "/" + ChosenEnemy[3];
         }
         if(CurrentHealth <= 0){
+            CurrentHealth=0;
             clearInterval(fighting);
             population -= 1;
-            WeaponDamage = 1;
+            Weapons[SwordIndex][1] = 1;
+            population += 1;
+            SwordIndex=0;
+            SaveValues();
+            setTimeout(GoHome(),2000);
+            
+
         } 
         if( CurrenteHealth <= 0){
+            CurrenteHealth=0;
             clearInterval(fighting);
-            ResW[1] += ChosenEnemy[5];
-            ResW[2] += ChosenEnemy[6]
+            ResW[0] += ChosenEnemy[5];
+            ResW[5] += ChosenEnemy[6];
+            SaveValues();
+            setTimeout(GoHome(),2000);
+
         }
         i+=1
     }, 250);
 }
 
 function LoadEnemy(){
-    AssingWeights(WeaponDamage)
+    AssingWeights(Weapons[SwordIndex][1])
     ChosenEnemy = ChoseEnemy();
     document.getElementById("eCharacterName").innerHTML = ChosenEnemy[0];
     document.getElementById("eHealth").innerHTML = "Health : " + ChosenEnemy[3] + "/" + ChosenEnemy[3];
@@ -76,17 +131,16 @@ function ChoseEnemy(){
     }  
 }
 
-function AssingWeights(WeaponDamage){
+function AssingWeights(WpnD){
     let RatWeight = 10;
     let GORWeight = 3;
-    let GRWeight = WeaponDamage;
+    let GRWeight = WpnD;
     let WWeight = 0;
     let SWeight = 0;
 
     const Weights = [RatWeight, GORWeight, GRWeight, WWeight, SWeight];
 
     for (let i = 0; i < Enemies.length; ++i) {
-        console.log("1  :" + Weights[i]);
         Enemies[i][1] = Weights[i];
     } 
 

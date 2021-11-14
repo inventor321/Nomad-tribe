@@ -1,0 +1,76 @@
+body{
+  background-color: #222;
+}
+
+h1{
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container{
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+}
+.Title{
+  color: white;
+  position: absolute;
+  height: 30px;
+  width: 100%;
+  top:0px;
+
+}
+
+.names{
+  color: white;
+  position: absolute;
+  height: 30px;
+  width: 100%;
+  top:0px;
+}
+
+
+.name{
+  position: absolute;
+  left: 0;
+}
+
+.Current{
+  position: absolute;
+  left:38%;
+  transform: translateX(-50%);
+
+}
+.Total{
+  position: absolute;
+  left:75%;
+  transform: translateX(-50%);
+}
+
+.Food{
+  top:30px;
+  color: #F5DEB3;
+}
+.Wood{
+  top:60px;
+  color: #BA8C63;
+}
+.Stone{
+  top:90px;
+  color: #918E85;
+}
+.Iron{
+  top:120px;
+  color: #a19d94;
+}
+.Steel{
+  top:150px;
+  color: #71797E;
+}
+.Leather{
+  top: 180px;
+  color: #97572b;
+}
