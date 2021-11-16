@@ -206,7 +206,9 @@ function Explore()
 {
     ExploredArea = ExploredArea + 5
     document.getElementById("ExploredLand").innerHTML = "World explored : " + ExploredArea + "/" + TotalArea + "m<sup>2</sup>"  + " ( " + ExploredArea/TotalArea + "% )";
-     
+    if(ExploredArea > 5000){
+        document.getElementById("CrystalLink").style.visibility="visible";
+    }
 }
 
 function Randint(a, b) {
@@ -216,20 +218,20 @@ function Randint(a, b) {
 function UpgradeWeapon(){
     let EnoughRes = true;
     for (let i = 2; i < Res.length; i++) {
-        if (ResTotal[i-1] < Weapons[SwordIndex][i]){
+        if (ResTotal[i-1] < Weapons[SwordIndex+1][i]){
             EnoughRes = false;
         }
     }
 
     if(EnoughRes){
         
-        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="hidden";
-        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.opacity=0;
+        document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="hidden";
+        document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.opacity=0;
         for (let i = 2; i < Res.length;i++) {
-            ResTotal[i-1] -= Weapons[SwordIndex][i];
+            ResTotal[i-1] -= Weapons[SwordIndex+1][i];
         }
         SwordIndex += 1;
-        document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="visible";
+        document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="visible";
         document.getElementById("TechTreeLink").style.display="block";
         
     }
