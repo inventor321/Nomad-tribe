@@ -49,17 +49,26 @@ body{
         animation-delay: 0.75s; 
 }
 
+#Character{
+        animation-iteration-count: 0;
+}
+
+#ECharacter{
+        animation-iteration-count: 0;
+}
+
+
 @keyframes Attack {
         0%{left: 0;}
-        50%{left: 0;}
-        75%{left: 100px;}
+        50%{left: 100px;}
+        75%{left: 0;}
         100%{left: 0;}
 }
 
 @keyframes EAttack {
         0%{right: 0;}
-        50%{right: 0;}
-        75%{right: 100px;}
+        50%{right: 100px;}
+        75%{right: 0;}
         100%{right: 0;}
 }
 
@@ -135,9 +144,13 @@ body{
         height: 300px;
         background-color: #eee;
         z-index: 999;
+        text-align: center;
         visibility: hidden;
         border: 1px #222 solid;
         color: black;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 }
 
 @keyframes ResultofBattle {

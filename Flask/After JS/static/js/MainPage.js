@@ -20,7 +20,7 @@ var ExploredArea = 0,
 //Weapons
 var SwordIndex = 0;
 // weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
-const Weapons = [["Wooden", 5, 20, 0, 0, 0], ["Stone", 9, 15, 15, 0, 0], ["Iron", 13, 25, 0, 15, 0], ["Steel", 17, 30, 0, 0, 15]]
+const Weapons = [["Fist", 1], ["Wooden", 5, 20, 0, 0, 0], ["Stone", 9, 15, 15, 0, 0], ["Iron", 13, 25, 0, 15, 0], ["Steel", 17, 30, 0, 0, 15]]
 
 
 //Chat
@@ -28,18 +28,10 @@ var chat = document.getElementById("chat");
 const HTwoElment = document.createElement("H2"); 
 const BRElment = document.createElement("br");
 
-function CheckRun(){
-    if(Run==0){
-        console.log("running First save")
-        console.log(Run)
-        SaveValues()
-        Run += 1;
-    }
-}
 
 function Start(){
     LoadValues();
-    CheckDisplay();
+    CheckDisplay()
     count(0);
     count(1);
 }
@@ -49,6 +41,9 @@ function CheckDisplay(){
     document.getElementById(ResWNames[0]).innerHTML =  ResW[0];
     document.getElementById(ResWNames[1]).innerHTML =  ResW[1];
     document.getElementById("Population").innerHTML =  "Population : " + Population + " / 5";
+    document.getElementById("WoodenSwordButton").style.visibility="hidden";
+    document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="visible";
+
 }
 
 
@@ -63,24 +58,24 @@ function ClearStorage(){
 }
 
 function SaveValues(){
-    console.log("saving...")
+
     //pop
-    
     localStorage.setItem("Population", JSON.stringify(Population));
 
     //Res and workers
-    localStorage.setItem("ResWNames", JSON.stringify(ResWNames));
     localStorage.setItem("ResTotal", JSON.stringify(ResTotal));
     localStorage.setItem("ResW", JSON.stringify(ResW));
-    localStorage.setItem("Res", JSON.stringify(Res));
-    console.log(ResTotal)
+
     //Weapons
     localStorage.setItem("SwordIndex", JSON.stringify(SwordIndex));
 
     //ExploredArea
     localStorage.setItem("ExploredArea", JSON.stringify(ExploredArea));
 
+    //First run
     localStorage.setItem("Run", JSON.stringify(Run));
+
+
 
 }
 
@@ -97,7 +92,8 @@ function LoadValues(){
     }*/
 
     if (localStorage.getItem("Run") === null){
-        CheckRun()
+        SaveValues() 
+        console.log("first run");
     }
 
     Population = JSON.parse(localStorage.getItem("Population"));
@@ -110,11 +106,14 @@ function LoadValues(){
 
     //Weapons
 
+    console.log(JSON.parse(localStorage.getItem("SwordIndex")));
     SwordIndex = JSON.parse(localStorage.getItem("SwordIndex"));
 
     //ExploredArea
+    console.log(JSON.parse(localStorage.getItem("ExploredArea")));
     ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
 
+    console.log(JSON.parse(localStorage.getItem("Run")) + "run");
     Run = JSON.parse(localStorage.getItem("Run"));
 
 }
@@ -159,7 +158,7 @@ function sendUserInfo(W, opertaion){
 
 function count(id){
     setInterval(function() {
-        ResTotal[id] = ResTotal[id] + ResW[id]*0.1;
+        ResTotal[id] = ResTotal[id] + ResW[id]*0.05;
         document.getElementById(Res[id]).innerHTML=addCommas(preciseRound(ResTotal[id],0));
     }, 100);
 }
@@ -231,6 +230,8 @@ function UpgradeWeapon(){
         }
         SwordIndex += 1;
         document.getElementById(Weapons[SwordIndex][0]+"SwordButton").style.visibility="visible";
+        document.getElementById("TechTreeLink").style.display="block";
+        
     }
 
 

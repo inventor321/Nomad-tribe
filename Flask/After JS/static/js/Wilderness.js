@@ -9,7 +9,6 @@ const Enemies = [
 ]
 
 var HomeURl = window.location.protocol + '//' + window.location.host + '/menu';
-console.log(HomeURl)
 function GoHome(){
     window.location.replace(HomeURl);
 }
@@ -18,12 +17,11 @@ var AttackSpeed = 1000;
 
 function LoadBattle(){
     UnpackValues();
-
     LoadPlayer();
     LoadEnemy();
     setTimeout(function(){
         Fight()
-    }, 1000);
+    }, 3000);
     
     
     
@@ -32,21 +30,18 @@ function LoadBattle(){
 
 function UnpackValues(){
     //pop
-    //console.log(Population)
     Population = JSON.parse(localStorage.getItem("Population"));
-    //console.log(Population)
+
 
     //Res and workers
 
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
     ResW = JSON.parse(localStorage.getItem("ResW"));
-    console.log("Res Total : " + ResTotal)
     //Weapons
     //weapons =   [ 0 name, 1 Damage, 2 Wood Cost, 3 Stone Cost, 4 Iron Cost, 5 Steel Cost]
     SwordIndex = JSON.parse(localStorage.getItem("SwordIndex"));
 
     //ExploredArea
-    //ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
     ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
 }
 
@@ -63,26 +58,44 @@ function SaveValues(){
     sessionStorage.setItem("SwordIndex", JSON.stringify(SwordIndex));
 
     sessionStorage.setItem("Run", JSON.stringify(Run));
+    
 
 }
 
 function LoadPlayer(){
     document.getElementById("Health").innerHTML = "Health : 20/20";
+
     document.getElementById("Attack").innerHTML = "Attack : " + Weapons[SwordIndex][1];
 }
 
 function Fight(){
     let i = 0;
+    let EIter = 0;
+    let Iter = 0;
     let CurrentHealth = Health;
     let CurrenteHealth = ChosenEnemy[3];
     var fighting = setInterval(function() {
         if(250*i%ChosenEnemy[4] == 0){
+            EIter += 1;
             CurrentHealth = CurrentHealth - ChosenEnemy[2];
             document.getElementById("Health").innerHTML = "Health : " + CurrentHealth + "/20";
+            document.getElementById("ECharacter").style.animation="EAttack " + ChosenEnemy[4]/1000 + "s ease";
+            document.getElementById("ECharacter").style.animationIterationCount = EIter;
+            
+            //change opponent color on hit
+            document.getElementById("Character").style.background="#" + Math.floor(Math.random()*16777215).toString(16);
+
+            
         }
         if(250*i%AttackSpeed == 0){
+            Iter += 1;
             CurrenteHealth = CurrenteHealth - Weapons[SwordIndex][1];
             document.getElementById("eHealth").innerHTML = "Health : " + CurrenteHealth + "/" + ChosenEnemy[3];
+            document.getElementById("Character").style.animation="Attack 1s ease";
+            document.getElementById("Character").style.animationIterationCount = Iter;
+
+            //change opponent color on hit
+            //document.getElementById("ECharacter").style.background="#" + Math.floor(Math.random()*16777215).toString(16);
         }
         if(CurrentHealth <= 0){
             CurrentHealth=0;
@@ -91,11 +104,12 @@ function Fight(){
             Weapons[SwordIndex][1] = 1;
             Population += 1;
             SwordIndex=0;
-            console.log("Res Total : " + ResTotal)
             SaveValues();
+            document.getElementById("BattleResult").innerHTML = "You died. You lose your warrior and his items.";
+            document.getElementById("BattleResult").style.visibility = "visible";
             setTimeout(function(){
-                GoHome()
-            },2000);
+                setTimeout(GoHome(),4000);
+            },4000);
             
 
         } 
@@ -105,9 +119,12 @@ function Fight(){
             ResTotal[0] += ChosenEnemy[5];
             ResTotal[5] += ChosenEnemy[6];
             SaveValues();
+            document.getElementById("BattleResult").innerHTML = "You defeated a " + ChosenEnemy[0] + ".<br> You gather " + ChosenEnemy[5] + " food and " + ChosenEnemy[6] + " wood.<br> You can return home now.";
+            document.getElementById("BattleResult").style.visibility = "visible";
             setTimeout(function(){
-                GoHome()
-            },2000);
+                setTimeout(GoHome(),4000);
+            },4000);
+            
 
         }
         i+=1

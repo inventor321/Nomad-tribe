@@ -933,7 +933,7 @@ html, body {
 }
 .line:before {
   content: ' ';
-  display: block;
+  display:block;
   position: absolute;
   top: 0;
   right: 0;
