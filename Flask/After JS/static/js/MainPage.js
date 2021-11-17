@@ -1,14 +1,15 @@
 var Run = 0;
 
 //Pop
-var Population = 5;
+var Population = 1;
+var MaxPopulation = 1;
 
 //Ressources, Workers  and their buttons
 var FWbutton = document.getElementById("FW")
 var WWbutton = document.getElementById("WW"),
 
 ResWNames = ["FW","WW","StoW","IW","SteW","LW",];
-ResTotal = [0,0,0,0,0,0];
+ResTotal = [100,100,0,0,0,0];
 ResW = [0,0,0,0,0,0];
 Res=["F","W","Sto","I", "Ste","L"];
 
@@ -40,9 +41,11 @@ function Start(){
 function CheckDisplay(){
     document.getElementById(ResWNames[0]).innerHTML =  ResW[0];
     document.getElementById(ResWNames[1]).innerHTML =  ResW[1];
-    document.getElementById("Population").innerHTML =  "Population : " + Population + " / 5";
+    document.getElementById("Population").innerHTML =  "Population : " + Population + " / " + MaxPopulation;
     document.getElementById("WoodenSwordButton").style.visibility="hidden";
     document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="visible";
+    document.getElementById("ExploredLand").innerHTML = "World explored : " + ExploredArea + "/" + TotalArea + "m<sup>2</sup>"  + " ( " + ExploredArea/TotalArea + "% )";
+
 
 }
 
@@ -119,8 +122,8 @@ function LoadValues(){
 }
 
 
-function increase(id,clr,pop) {
-    if(ResW[0]+ResW[1]<pop){
+function increase(id,clr) {
+    if(ResW[0]+ResW[1]+1<Population){
         ResW[id] += 1;
         sendUserInfo(ResWNames[id],1)
     }
@@ -158,7 +161,7 @@ function sendUserInfo(W, opertaion){
 
 function count(id){
     setInterval(function() {
-        ResTotal[id] = ResTotal[id] + ResW[id]*0.05;
+        ResTotal[id] = ResTotal[id] + ResW[id]*0.01;
         document.getElementById(Res[id]).innerHTML=addCommas(preciseRound(ResTotal[id],0));
     }, 100);
 }
@@ -190,16 +193,21 @@ function Gather(){
     ResTotal[0] += Randint(1, 3);
     ResTotal[1] += Randint(1, 6);
     
+    AddTextToChat("You find wood and some food")
+    
+
+    
+}
+
+function AddTextToChat(message){
     const BRElment = document.createElement("br");
     const HTwoElment = document.createElement("H2");
-    const HTwoText = document.createTextNode("You find wood and some food");
+    let HTwoText = document.createTextNode(message);
     HTwoElment.appendChild(HTwoText);
-    const child = document.querySelector(".event");
+    let child = document.querySelector(".event");
     HTwoElment.className="event";
     chat.insertBefore(HTwoElment,child);
     chat.insertBefore(BRElment,child);
-
-    
 }
 
 function Explore()
@@ -224,7 +232,9 @@ function UpgradeWeapon(){
     }
 
     if(EnoughRes){
-        
+        if(Weapons[SwordIndex+1][0] == "Wooden"){
+
+        }
         document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="hidden";
         document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.opacity=0;
         for (let i = 2; i < Res.length;i++) {

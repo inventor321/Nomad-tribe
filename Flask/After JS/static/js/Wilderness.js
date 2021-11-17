@@ -158,10 +158,10 @@ function ChoseEnemy(){
 
 function AssingWeights(WpnD){
     let RatWeight = 10;
-    let GORWeight = 0;
-    let GRWeight = 0;
-    let WWeight = 0;
-    let SWeight = 0;
+    let GORWeight = WpnD*3;
+    let GRWeight = (WpnD/2) ** 2;
+    let WWeight = (WpnD/5)**4;
+    let SWeight = (WpnD/8)**6;
 
     const Weights = [RatWeight, GORWeight, GRWeight, WWeight, SWeight];
 
