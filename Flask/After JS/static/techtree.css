@@ -79,18 +79,24 @@ h2{
     top: 0;
     left: 0;
 }
-.Upgrade-btn:hover{
+.Upgrade-btn:hover:enabled{
     background-color: darkgray;
     color: white;
 }
 
+Button:disabled{
+    opacity: 0.7;
+}
 
+#StoneTools{
+    display: block;
+}
 
-#StoneContainer{
+#StoneToolsContainer{
     top: 250px;
     left: 30px;
 }
-#Stone:hover + .popup{
+#StoneTools:hover + .popup{
     position: absolute;
     visibility: visible;
     bottom: 40px;
@@ -98,16 +104,20 @@ h2{
     
 }
 
-#STtoIT{
+#IronToolsBar{
     top: 260px;
     left: 200px;
 }
 
-#IronContainer{
+#IronTools{
+    display: none;
+}
+
+#IronToolsContainer{
     top: 250px;
     left: 300px;
 }
-#Iron:hover + .popup{
+#IronTools:hover + .popup{
     position: absolute;
     visibility: visible;
     bottom: 40px;
@@ -115,17 +125,21 @@ h2{
     
 }
 
-#ITtoST{
+#SteelTools{
+    display: none;
+}
+
+#SteelToolsBar{
     top: 260px;
     left: 470px;
 }
 
 
-#SteelContainer{
+#SteelToolsContainer{
     top: 250px;
     left: 570px;
 }
-#Steel:hover + .popup{
+#SteelTools:hover + .popup{
     position: absolute;
     visibility: visible;
     bottom: 40px;
@@ -138,21 +152,71 @@ h2{
 
 
 
+#Communities{
+    display: block;
+}
 
 
-
-#RessourceContainer{
+#CommunitiesContainer{
     top: 100px;
     left: 30px;
 }
 
-#ressource:hover + .popup{
+#Communities:hover + .popup{
     position: absolute;
     visibility: visible;
     bottom: 40px;
     left: 1px;
     
 }
+
+#Villagios{
+    display: none;
+}
+
+#VillagiosBar{
+    top: 110px;
+    left: 200px;
+}
+
+
+#VillagiosContainer{
+    top: 100px;
+    left: 300px;
+}
+#Villagios:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+#RessourceProduction{
+    display: none;
+}
+
+#RessourceProductionBar{
+    top: 110px;
+    left: 470px;
+}
+
+
+#RessourceProductionContainer{
+    top: 100px;
+    left: 570px;
+}
+#RessourceProduction:hover + .popup{
+    position: absolute;
+    visibility: visible;
+    bottom: 40px;
+    left: 1px;
+    
+}
+
+
+
+
 
 
 #HuntingStrategiesContainer{
@@ -167,7 +231,7 @@ h2{
     
 }
 
-#HStoS{
+#SpearsBar{
     top:460px;
     left: 200px;
 }
@@ -176,14 +240,14 @@ h2{
     top: 450px;
     left: 300px; 
 }
-#spears:hover + .popup{
+#Spears:hover + .popup{
     position: absolute;
     visibility: visible;
     bottom: 40px;
     left: 1px;
 }
 
-#StoA{
+#AtlatlBar{
     top:460px;
     left: 470px;
 }
@@ -270,3 +334,5 @@ h2{
     background-color: rgb(204, 204, 204);
     color: black;
 }
+
+

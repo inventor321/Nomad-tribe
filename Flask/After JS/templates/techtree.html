@@ -6,58 +6,91 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='techtree.css') }}">
 
 </head>
-<body>
+<body onload="LoadTech()">
 
     
         <div class="bbackground">
             <a href="." class="ReturnButton" onclick="Redirect('http://127.0.0.1:5000/menu/')">Return to Camp</a>
             <div class="background"> 
                 <div class="Title">Tools</div>
-                <form action="" method="POST">
-                <div class="contain" id="StoneContainer">
-                    <input type="submit" class="Upgrade-btn" name="Stonetools" id="Stone" value="Stone tools">
-                    <div class="popup">
-                        25 science<br>25 wood<br><h2>Unlocks Stone tools</h2><br>
-                    </div>
-                    <div class="bought" style="display:{{Stonetoolsdisplay}};"></div>
+                
+                <div id="Communities">
+                    <div class="contain" id="CommunitiesContainer">
+                        <button class="Upgrade-btn" id="CommunitiesButton" onclick="TechCheck(0)">Communities</button> 
+                        <div class="popup">
+                            25 science<br>25 wood<br><h2>Unlocks Stone tools</h2><br>
+                        </div>
 
+                    </div>
+                </div>
+                <div id="Villagios">
+                    <hr class="line" id="VillagiosBar" >
+                    <div class="contain" id="VillagiosContainer" >
+                        <button class="Upgrade-btn" id="VillagiosButton" onclick="TechCheck(1)">Villagios</button> 
+                        <div class="popup">
+                            50 science<br>25 wood<br><h2>Unlocks Iron tools</h2><br>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                <div id="RessourceProduction">
+                    <hr class="line" id="RessourceProductionBar" >
+                    <div class="contain" id="RessourceProductionContainer" >
+                        <button class="Upgrade-btn" id="RessourceProductionButton" onclick="TechCheck(2)">Ressource Production</button> 
+                        <div class="popup">
+                            50 science<br>25 wood<br><h2>Unlocks Iron tools</h2><br>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                <div id="StoneTools">
+                    <div class="contain" id="StoneToolsContainer">
+                        <button class="Upgrade-btn" id="StoneToolsButton" onclick="TechCheck(3)">Stone tools</button> 
+                        <div class="popup">
+                            25 science<br>25 wood<br><h2>Unlocks Stone tools</h2><br>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="IronTools">
+                    <hr class="line" id="IronToolsBar" >
+                    <div class="contain" id="IronToolsContainer" >
+                        <button class="Upgrade-btn" id="IronToolsButton" onclick="TechCheck(4)">Iron tools</button> 
+                        <div class="popup">
+                            50 science<br>25 wood<br><h2>Unlocks Iron tools</h2><br>
+                        </div>
+                        
+
+                    </div>
                 </div>
 
-                <hr class="line" id="STtoIT" style="display:{{UpgradeIrontoolsdisplay}};">
+                <div id="SteelTools">
+                    <hr class="line" id="SteelToolsBar" >
 
-                <div class="contain" id="IronContainer" style="display:{{UpgradeIrontoolsdisplay}};">
-                    <input type="submit" class="Upgrade-btn" name="Irontools" id="Iron" value="Iron tools">
-                    <div class="popup">
-                        50 science<br>25 wood<br><h2>Unlocks Iron tools</h2><br>
+                    <div class="contain" id="SteelToolsContainer">
+                        <button class="Upgrade-btn" id="SteelToolsButton" onclick="TechCheck(5)">Steel tools</button> 
+                        <div class="popup">
+                            75 science<br>25 wood<br><h2>Unlocks Steel tools</h2><br>
+                        </div>
+                        
+
                     </div>
-                    <div class="bought" style="display:{{Irontoolsdisplay}};"></div>
-
                 </div>
-
-                <hr class="line" id="ITtoST" style="display:{{UpgradeSteeltoolsdisplay}};">
-
-                <div class="contain" id="SteelContainer" style="display:{{UpgradeSteeltoolsdisplay}};">
-                    <input type="submit" class="Upgrade-btn" name="Steeltools" id="Steel" value="Steel tools">
-                    <div class="popup">
-                        75 science<br>25 wood<br><h2>Unlocks Steel tools</h2><br>
-                    </div>
-                    <div class="bought" style="display:{{Steeltoolsdisplay}};"></div>
-
-                </div>
-
             
                 
                 <div class="contain" id="RessourceContainer">
-                <input type="submit" class="Upgrade-btn" name="Ressourceproduction" id="Ressource" value="Ressource production">
-                <div class="popup">25 science<br>50 food <br><h1>+50% ressources produced by population</h1> </div>
-                <div class="bought" style="display:{{Ressourceproductiondisplay}};"></div>
+                    <!--<button class="Upgrade-btn" id="Ressource"  onclick="TechCheck(5)">Steel tools</button> -->
+                    <div class="popup">25 science<br>50 food <br><h1>+50% ressources produced by population</h1> </div>
+                
                 </div>
                 
 
                 <div class="contain" id="HuntingStrategiesContainer">
                 <input type="submit" class="Upgrade-btn" name="HuntingStrategies" id="HuntingStrategies" value="Hunting Strategies">
                 <div class="popup">10 science<br>20 food<h2>Unlocks Hunting</h2>Animals are a better source of food than just berries.<h1>+25% food when gathering ressources</h1></div>
-                <div class="bought" style="display:{{HuntingStrategiesdisplay}};"></div>
+                
                 </div>
                 
                 <hr class="line" id="HStoS" style="display:{{UpgradeSpearsdisplay}};">
@@ -70,7 +103,7 @@
                     Throwing spears is more effecient than chasing your food.
                     <h1>+30% food when gathering ressources</h1>
                 </div>
-                <div class="bought" style="display:{{Spearsdisplay}};"></div>
+                
                 </div>
 
                 <hr class="line" id="StoA" style="display:{{UpgradeAtlatldisplay}};">
@@ -83,7 +116,7 @@
                         Increases the range of the spears you throw.
                         <h1>+30% food when gathering ressources</h1>
                     </div>
-                    <div class="bought" style="display:{{Atlatldisplay}};"></div>
+                    
                 </div>
 
                 <div class="contain" id="SackContainer"> 
@@ -94,7 +127,7 @@
                         Increases the range of the spears you throw.
                         <h1>+30% food when gathering ressources</h1>
                     </div>
-                    <div class="bought" style="display:{{Sackdisplay}};"></div>
+                    
                 </div>
 
                 <hr class="line" id="StoH" style="display:{{UpgradeHutdisplay}};">
@@ -107,12 +140,13 @@
                         Allows you to accomedate people into your tribe.
                         <h1>+4 population space</h1>
                     </div>
-                    <div class="bought" style="display:{{Hutdisplay}};"></div>
+                    
                 </div>
                 
 
-            </form>
+            
             </div>
         </div>
+        <script src="{{url_for('static', filename='js/TechTree.js')}}"></script>
 </body>
 </html>

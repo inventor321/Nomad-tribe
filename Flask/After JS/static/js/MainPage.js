@@ -4,6 +4,8 @@ var Run = 0;
 var Population = 1;
 var MaxPopulation = 1;
 
+
+
 //Ressources, Workers  and their buttons
 var FWbutton = document.getElementById("FW")
 var WWbutton = document.getElementById("WW"),
@@ -32,7 +34,7 @@ const BRElment = document.createElement("br");
 
 function Start(){
     LoadValues();
-    CheckDisplay()
+    CheckDisplay();
     count(0);
     count(1);
 }
@@ -41,11 +43,17 @@ function Start(){
 function CheckDisplay(){
     document.getElementById(ResWNames[0]).innerHTML =  ResW[0];
     document.getElementById(ResWNames[1]).innerHTML =  ResW[1];
+    console.log(Population)
     document.getElementById("Population").innerHTML =  "Population : " + Population + " / " + MaxPopulation;
     document.getElementById("WoodenSwordButton").style.visibility="hidden";
     document.getElementById(Weapons[SwordIndex+1][0]+"SwordButton").style.visibility="visible";
     document.getElementById("ExploredLand").innerHTML = "World explored : " + ExploredArea + "/" + TotalArea + "m<sup>2</sup>"  + " ( " + ExploredArea/TotalArea + "% )";
-
+    document.getElementById("GatherButton").disabled = true;
+    setTimeout(function(){document.getElementById("GatherButton").disabled = false;},11000);
+    var element = document.getElementById("loading");
+    element.classList.remove("progress-value");
+    void element.offsetWidth;
+    element.classList.add("progress-value");
 
 }
 
@@ -98,25 +106,25 @@ function LoadValues(){
         SaveValues() 
         console.log("first run");
     }
-
+    console.log(Population, 1)
     Population = JSON.parse(localStorage.getItem("Population"));
-
+    console.log(Population, 1)
     //Res and workers
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
-    console.log("Res Total : " + ResTotal)
+    
     ResW = JSON.parse(localStorage.getItem("ResW"));
-    console.log("Res workers : " + ResW)
+    
 
     //Weapons
 
-    console.log(JSON.parse(localStorage.getItem("SwordIndex")));
+    
     SwordIndex = JSON.parse(localStorage.getItem("SwordIndex"));
 
     //ExploredArea
-    console.log(JSON.parse(localStorage.getItem("ExploredArea")));
+    
     ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
 
-    console.log(JSON.parse(localStorage.getItem("Run")) + "run");
+    
     Run = JSON.parse(localStorage.getItem("Run"));
 
 }
@@ -190,8 +198,13 @@ function Gather(){
     element.classList.remove("progress-value");
     void element.offsetWidth;
     element.classList.add("progress-value");
-    ResTotal[0] += Randint(1, 3);
-    ResTotal[1] += Randint(1, 6);
+    if (Math.random()<0.6){
+        Redirect('http://127.0.0.1:5000/wilderness')
+    }else{
+        ResTotal[0] += Randint(1, 3);
+        ResTotal[1] += Randint(1, 6);
+    }
+
     
     AddTextToChat("You find wood and some food")
     

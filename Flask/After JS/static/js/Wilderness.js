@@ -2,7 +2,7 @@
 // [name, Weight of spawning, Damage, Health, Attack Speed, Food Loot, Leather Loot]
 const Enemies = [
     ["Rat", 5, 1, 3, 500, 1, 0],
-    [ "Group of Rats", 4, 3, 10, 750, 3, 1], 
+    [ "Group of Rats", 4, 3, 10, 250, 3, 1], 
     ["Huge Rat", 2, 5, 15, 1000, 5, 2], 
     ["Wolf", 1, 10, 22, 1250, 7, 5],  
     ["Stag", 0, 20, 35, 1750, 20, 10]
@@ -46,9 +46,9 @@ function UnpackValues(){
 }
 
 
-function SaveValues(){
+function SavingValues(){
     //pop
-    sessionStorage.setItem("Population", JSON.stringify(Population));
+    localStorage.setItem("Population", JSON.stringify(Population));
 
     //Res and workers
     sessionStorage.setItem("ResTotal", JSON.stringify(ResTotal));
@@ -61,6 +61,7 @@ function SaveValues(){
     
 
 }
+
 
 function LoadPlayer(){
     document.getElementById("Health").innerHTML = "Health : 20/20";
@@ -101,15 +102,21 @@ function Fight(){
             CurrentHealth=0;
             clearInterval(fighting);
             Population -= 1;
-            Weapons[SwordIndex][1] = 1;
-            Population += 1;
+            sessionStorage.setItem("Population", JSON.stringify(Population));
             SwordIndex=0;
-            SaveValues();
+            SavingValues();
             document.getElementById("BattleResult").innerHTML = "You died. You lose your warrior and his items.";
             document.getElementById("BattleResult").style.visibility = "visible";
             setTimeout(function(){
-                setTimeout(GoHome(),4000);
+                setTimeout(function(){
+                
+                    SavingValues()
+                    
+                },4000);
             },4000);
+            setTimeout(function(){
+                setTimeout(GoHome(),5000);
+            },5000);
             
 
         } 
@@ -118,7 +125,7 @@ function Fight(){
             clearInterval(fighting);
             ResTotal[0] += ChosenEnemy[5];
             ResTotal[5] += ChosenEnemy[6];
-            SaveValues();
+            SavingValues();
             document.getElementById("BattleResult").innerHTML = "You defeated a " + ChosenEnemy[0] + ".<br> You gather " + ChosenEnemy[5] + " food and " + ChosenEnemy[6] + " wood.<br> You can return home now.";
             document.getElementById("BattleResult").style.visibility = "visible";
             setTimeout(function(){
@@ -157,11 +164,11 @@ function ChoseEnemy(){
 }
 
 function AssingWeights(WpnD){
-    let RatWeight = 10;
+    let RatWeight = 0;//10;
     let GORWeight = WpnD*3;
-    let GRWeight = (WpnD/2) ** 2;
-    let WWeight = (WpnD/5)**4;
-    let SWeight = (WpnD/8)**6;
+    let GRWeight = 0;//(WpnD/2) ** 2;
+    let WWeight = 0;//(WpnD/5)**4;
+    let SWeight = 0;//(WpnD/8)**6;
 
     const Weights = [RatWeight, GORWeight, GRWeight, WWeight, SWeight];
 
