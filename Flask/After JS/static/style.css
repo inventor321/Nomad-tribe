@@ -13,47 +13,14 @@ h1{
 
 }
 
-
-
-.contain{
-        position:relative;
-        height: 30px;
-
-        width: 100px;
-        border: 1px solid orange;
-}
-
-
-
-
-
-
-.cooldown{
-        background-color: darkgray;
-        z-index: 999;
-        visibility: hidden;
-}
-
-
-
 .population{
         position: absolute;
         float:left;
         left: 20px;
 }
 
-.buttons{
-        width: 40px;
-        position: absolute;
-        left:150px;
-        float:left;
-        margin-right: 30px;
-}
 
-.R{
-        left:250px;
-        
-}
+
 a {color:linear-gradient(to right, black 50%, white 50%);}  
 a:active {color:black;}
 a:visited {color: black;}
@@ -77,24 +44,6 @@ body {
   display: flex;
 
 
-}
-
-.webkit{
-        background-color: #eee;
-        min-height: 100vh;
-        display: -webkit-box;
-        display: flex;
-
-
-}
-
-
-
-.wilderness{
-        width: 100%;
-        height: 100%;
-        color: darkgreen;
-        background-color: black;
 }
 
 .container {
@@ -514,38 +463,6 @@ body {
         inherits: false;
 }*/
 
-.income {
-        position: absolute;
-        animation: counter 1s infinite ;
-        counter-reset: num var(--num);
-        float:left;
-        margin-right: 50px;
-}
-.income::after {
-        content: counter(num);
-}
-:root{
-        --n:30;
-        --u:4;
-}
-@keyframes counter {
-        from {
-          --num: var(--u);
-        }
-        to {
-          --num: var(--n);
-        }
-}
-
-/*
-.workers{
-        position: absolute;
-        left: 215px;
-        float:left;
-        margin-right: 30px;
-}
-*/
-
 
 
 
@@ -566,34 +483,7 @@ body {
         z-index:1;
 }
 
-.butt{
-        position:absolute;
-        left: 0;
-        top: 0;
-        height: 40px;
-        width: 150px;
-        background-color:#eee;
-        z-index:-1;
-}
 
-.butth{
-        position:absolute;
-        left: 0;
-        top: 0;
-        height: 40px;
-        width: 150px;
-        background-color:#eee;
-        z-index:10;
-}
-.butthbackground{
-        position:absolute;
-        left: -50px;
-        top: -50px;
-        height: 200px;
-        width: 300px;
-        background:#222;
-        z-index:9;
-}
 
 .progress-value {
         animation: load 11s normal forwards;
@@ -609,20 +499,6 @@ body {
         
 
 }
-.value {
-        animation: sload 0.01s normal forwards;
-        animation-delay:3.85s;
-        box-shadow: 0 10px 40px -10px #fff;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: #fff;
-        
-        height: 40px;
-        width: 150px;
-        opacity:0;
-}
-
 
 
 @keyframes load {
@@ -852,10 +728,6 @@ body {
 }
 
 
-.sword{
-  top: 5px;
-  left: 20px;
-}
 
 .spear{
   top: 65px;

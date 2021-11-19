@@ -14,7 +14,7 @@ const Techs =   [["Communities",          "Communities"        , 50,   25  ,    
 ]
 //  Researched = [    0      ,    1     ,       2             ,       3    ,    4      ,    5       ,    6              ,     7 ,     8  ]
 //  Researched = [Communities, villagios, Ressource Production, Stone Tools, Iron Tools, Steel Tools, Hunting Stratagies, Spears, Atlatls]
-var Researched = [ false,      false,     false,                true,        false,      false,        false,            false,  false]
+var Researched = [ false,          false,         false       ,       false,      false,      false,        false,            false,  false]
 
 function Redirect(link){
     SaveValues()
@@ -22,40 +22,45 @@ function Redirect(link){
 }
 
 function UnpackValues(){
+
     //Res 
     ResTotal = JSON.parse(localStorage.getItem("ResTotal"));
 
     //ExploredArea
     ExploredArea = JSON.parse(localStorage.getItem("ExploredArea"));
 
-    if(JSON.parse(localStorage.getItem("Researched")) != null){
-        Researched = JSON.parse(localStorage.getItem("Researched"))
+    if(JSON.parse(localStorage.getItem("Researched")) === null){
+        console.log("running execcpl")
+        localStorage.setItem("Researched", JSON.stringify(Researched));
+
     }
+    
+    Researched = JSON.parse(localStorage.getItem("Researched"));
+    console.log(Researched)
 
 }
 
 
 function SaveValues(){
 
+    //Researched
+    localStorage.setItem("Researched", JSON.stringify(Researched));
+
     //Res and workers
     sessionStorage.setItem("ResTotal", JSON.stringify(ResTotal));
 
-    sessionStorage.setItem("Researched", JSON.stringify(Researched));
     
 }
 
 
 function LoadTech(){
-    console.log("loadiing")
     UnpackValues()
-    console.log("loadiing2")
     ShowTech()
-    console.log("loadedd")
 }
 
 
 function ShowTech(){
-    console.log(Researched)
+    console.log("showing tech")
     for(let i =0; i<Researched.length; i++){
         console.log(Researched[i], Researched.length)
         if(Researched[i]){
@@ -65,6 +70,7 @@ function ShowTech(){
         
         
     }
+    console.log("finished shpwing tech")
 }
 
 
@@ -74,19 +80,27 @@ function ResearchTech(TechIndex, ){
 
 
 function TechCheck(TechIndex){
+
     let EnoughRes = true;
-    for(let i =1; i<Techs[1].length;i++){
-        if (Techs[TechIndex][i]>ResTotal[i-1]){
-            console.log("not enough res", ResTotal[i-1], Techs[TechIndex][i])
+    for(let i =2; i<Techs[1].length-2;i++){
+        if (Techs[TechIndex][i]>ResTotal[i-2]){
+            console.log("not enough res", ResTotal[i-2], Techs[TechIndex][i])
             return;
         }
     }
+
     if (EnoughRes){
-        document.getElementById(Techs[i][1]).disabled = true;
-        document.getElementById(Techs[i+1][1]).style.display="block";
-        for(let i =1; i<Techs[1].length;i++){
-            ResTotal[i-1] -= Techs[TechIndex][i];
+
+        document.getElementById(Techs[TechIndex][1]+"Button").disabled = true;
+        document.getElementById(Techs[TechIndex+1][1]).style.display="block";
+        for(let i =2; i<Techs[1].length-2;i++){
+            ResTotal[i-2] -= Techs[TechIndex][i];
         }
-        
+        Researched[TechIndex]=true;
     }
+
+    SaveValues()
+
+
+
 }

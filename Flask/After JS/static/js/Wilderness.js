@@ -50,6 +50,7 @@ function SavingValues(){
     //pop
     localStorage.setItem("Population", JSON.stringify(Population));
 
+
     //Res and workers
     sessionStorage.setItem("ResTotal", JSON.stringify(ResTotal));
     sessionStorage.setItem("ResW", JSON.stringify(ResW));
